@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adopting a Grandparent — Build Community. Raise Children Together.</title>
+  <meta name="description" content="Connecting families with seniors and neighbors to reduce childcare costs, fight isolation, and rebuild intergenerational community." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --warm: #F5F0E8;
+      --cream: #FDFAF5;
+      --sage: #5C7A5C;
+      --sage-light: #8AAF8A;
+      --terracotta: #C26B3F;
+      --terracotta-light: #E8956D;
+      --charcoal: #2C2C2C;
+      --mid: #6B6B6B;
+      --border: #E0D8CC;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--sage);
+      letter-spacing: 0.02em;
+    }
+    nav a.cta-small {
+      background: var(--terracotta);
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-family: sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    nav a.cta-small:hover { background: var(--terracotta-light); }
+
+    /* HERO */
+    .hero {
+      background: var(--warm);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero .eyebrow {
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.2;
+      color: var(--charcoal);
+      max-width: 780px;
+      margin: 0 auto 1.5rem;
+    }
+    .hero h1 span { color: var(--sage); }
+    .hero .subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--mid);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-cta {
+      display: inline-flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: var(--terracotta);
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 5px;
+      font-family: sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--terracotta-light); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--sage);
+      border: 2px solid var(--sage);
+      padding: 0.9rem 2rem;
+      border-radius: 5px;
+      font-family: sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: var(--sage); color: white; }
+
+    /* STATS BAR */
+    .stats {
+      background: var(--sage);
+      color: white;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+      padding: 2rem;
+      text-align: center;
+    }
+    .stat-item .number {
+      font-size: 2rem;
+      font-weight: bold;
+      display: block;
+    }
+    .stat-item .label {
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* SECTION DEFAULTS */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.8rem;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      color: var(--charcoal);
+    }
+
+    /* PROBLEM */
+    .problem { background: var(--cream); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .problem-card {
+      background: var(--warm);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.8rem 1.5rem;
+    }
+    .problem-card .icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+    .problem-card h3 {
+      font-size: 1rem;
+      font-family: sans-serif;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    /* HOW IT WORKS */
+    .how { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .step { text-align: center; }
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--sage);
+      color: white;
+      font-family: sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .step h3 {
+      font-size: 1rem;
+      font-family: sans-serif;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .step p { font-size: 0.9rem; color: var(--mid); }
+
+    /* QUOTES */
+    .quotes { background: var(--cream); }
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .quote-card {
+      border-left: 3px solid var(--terracotta);
+      padding: 1.5rem;
+      background: var(--warm);
+      border-radius: 0 8px 8px 0;
+    }
+    .quote-card blockquote {
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .quote-card .attribution {
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      color: var(--mid);
+      font-weight: 600;
+    }
+
+    /* VISION */
+    .vision { background: var(--sage); color: white; }
+    .vision h2 { color: white; }
+    .vision p { color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 680px; margin-bottom: 1.2rem; }
+
+    /* SIGNUP */
+    .signup { background: var(--warm); border-top: 1px solid var(--border); text-align: center; }
+    .signup h2 { max-width: 600px; margin: 0 auto 0.8rem; }
+    .signup .sub { color: var(--mid); margin-bottom: 2.5rem; font-size: 1.05rem; }
+    .signup-form {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .signup-form input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.85rem 1.2rem;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: sans-serif;
+      background: white;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .signup-form input[type="email"]:focus { border-color: var(--sage); }
+    .signup-form select {
+      padding: 0.85rem 1.2rem;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      font-size: 0.9rem;
+      font-family: sans-serif;
+      background: white;
+      color: var(--charcoal);
+      cursor: pointer;
+      outline: none;
+    }
+    .signup-form .btn-primary { white-space: nowrap; }
+    .form-note {
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-top: 1rem;
+    }
+    .success-msg {
+      display: none;
+      background: var(--sage);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-family: sans-serif;
+      margin-top: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2rem;
+      font-family: sans-serif;
+      font-size: 0.8rem;
+    }
+    footer span { color: rgba(255,255,255,0.8); }
+
+    @media (max-width: 600px) {
+      .stats { gap: 2rem; }
+      nav { padding: 0.8rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Adopting a Grandparent</div>
+  <a class="cta-small" href="#signup">Join Early Access</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">Early Stage · Seattle, WA · Seeking Feedback</div>
+  <h1>Your village is out there.<br><span>Let's help you find it.</span></h1>
+  <p class="subtitle">
+    A community platform connecting families, seniors, and neighbors —
+    to share childcare, reduce costs, and build the intergenerational bonds we've lost.
+  </p>
+  <div class="hero-cta">
+    <a class="btn-primary" href="#signup">Get Early Access</a>
+    <a class="btn-secondary" href="#how">See How It Works</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item">
+    <span class="number">$4,700</span>
+    <span class="label">avg. monthly childcare cost for 2 kids in Seattle</span>
+  </div>
+  <div class="stat-item">
+    <span class="number">1 in 3</span>
+    <span class="label">seniors report feeling regularly lonely</span>
+  </div>
+  <div class="stat-item">
+    <span class="number">47M</span>
+    <span class="label">immigrants in the US with family far away</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2>Modern life broke the village.<br>We want to rebuild it.</h2>
+    <p style="color: var(--mid); max-width: 640px;">
+      Families pay a fortune for childcare from strangers. Seniors lose their friends and sit alone.
+      Immigrants raise children thousands of miles from their own parents. And neighbors don't know each other's names.
+      These aren't separate problems — they're one.
+    </p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="icon">💸</div>
+        <h3>Childcare is unaffordable</h3>
+        <p>$30–$50/hr for a babysitter. Over $4,000/month for daycare. Families are stretched to the limit.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🧓</div>
+        <h3>Seniors are isolated</h3>
+        <p>Friends pass away. Children move. Seniors have time, wisdom, and love to give — but no way to connect.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🌍</div>
+        <h3>Families are far apart</h3>
+        <p>Grandparents are on another continent. The bonds that used to hold communities together are missing.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🏘️</div>
+        <h3>Neighborhoods feel empty</h3>
+        <p>We live next door to each other but don't know each other. Real community doesn't happen by accident anymore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2>A LinkedIn for community — built on who you are, not what you do.</h2>
+    <p style="color: var(--mid); max-width: 640px;">
+      Instead of a work resume, your profile highlights your passions, cultural background, availability, and what you need.
+      The app finds genuine matches in your neighborhood — and helps you build real relationships over time.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Create your profile</h3>
+        <p>Share who you are — your origins, languages, passions, what you can offer, and what you're looking for.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Get matched locally</h3>
+        <p>We connect you with compatible people nearby — a senior who loves kids, a neighbor who speaks your language, a family that needs what you offer.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Start small, grow real</h3>
+        <p>A first meeting, a shared meal, an afternoon with the kids. Relationships that are genuine — not transactional.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Build your village</h3>
+        <p>Over time, you gain a network of trusted neighbors — reducing costs, loneliness, and the feeling of doing it all alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section class="quotes">
+  <div class="container">
+    <div class="section-label">What We're Hearing</div>
+    <h2>Real voices. Real needs.</h2>
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <blockquote>"We pay $4,700 a month for both kids. If I could cut that in half, it would genuinely change our family budget."</blockquote>
+        <div class="attribution">— Josh, father of 2, Kirkland WA</div>
+      </div>
+      <div class="quote-card">
+        <blockquote>"I moved to Seattle not knowing anyone, then got pregnant. Now I have a baby and no time to make friends. I just want a community around me."</blockquote>
+        <div class="attribution">— Valerie, mother of a 7-month-old, Seattle WA</div>
+      </div>
+      <div class="quote-card">
+        <blockquote>"My father is Venezuelan — he'd love someone to cook him a meal from home, speak Spanish with him, and just be a friend. Not a caretaker. A friend."</blockquote>
+        <div class="attribution">— Karon, Co.Motion Seattle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision">
+  <div class="container">
+    <div class="section-label" style="color: rgba(255,255,255,0.6);">Our Vision</div>
+    <h2>More than childcare. A new kind of community infrastructure.</h2>
+    <p>
+      Think of it as the digital version of how communities used to work — word of mouth, trust, reciprocity.
+      Where you could knock on a neighbor's door and ask for help. Where an elder was a resource, not a burden.
+    </p>
+    <p>
+      We're building a platform that scales that feeling.
+      Whether it's a "grandparent" who watches the kids on weekends, a neighbor who cooks traditional food for an elderly man who misses home,
+      or a teenager who helps a senior use a smartphone — every connection matters.
+    </p>
+  </div>
+</section>
+
+<!-- SIGNUP -->
+<section class="signup" id="signup">
+  <div class="container">
+    <div class="section-label">Early Access</div>
+    <h2>We're in early conversations — and we'd love to hear from you.</h2>
+    <p class="sub">
+      We're not building in a vacuum. Tell us who you are and we'll be in touch to hear your story.
+    </p>
+    <form class="signup-form" id="waitlistForm" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="Your email address" required />
+      <select>
+        <option value="">I am a...</option>
+        <option value="parent">Parent / Family</option>
+        <option value="senior">Senior / Retiree</option>
+        <option value="neighbor">Interested neighbor</option>
+        <option value="investor">Investor / Advisor</option>
+        <option value="other">Other</option>
+      </select>
+      <button type="submit" class="btn-primary">Join Waitlist →</button>
+    </form>
+    <p class="form-note">No spam. No commitment. Just a conversation.</p>
+    <div class="success-msg" id="successMsg">
+      Thank you! We'll reach out soon. You're helping us build something meaningful.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Adopting a Grandparent</span> · Seattle, WA · Early Stage Startup · <a href="mailto:hello@adoptingagrandparent.com" style="color: rgba(255,255,255,0.6);">hello@adoptingagrandparent.com</a></p>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('waitlistForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
