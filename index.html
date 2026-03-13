@@ -281,6 +281,87 @@
     }
     .village-match-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
 
+    /* MARKET OPPORTUNITY */
+    .market { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .tam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+    .tam-card {
+      background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.8rem 1.5rem; text-align: center;
+    }
+    .tam-label {
+      font-family: sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .tam-label.tam { color: var(--sage); }
+    .tam-label.sam { color: var(--terracotta); }
+    .tam-label.som { color: var(--app-pink); }
+    .tam-number { font-size: 2.4rem; font-weight: 800; color: var(--charcoal); line-height: 1; margin-bottom: 0.5rem; }
+    .tam-desc { font-family: sans-serif; font-size: 0.82rem; color: var(--mid); line-height: 1.5; margin-bottom: 0.6rem; }
+    .tam-source { font-family: sans-serif; font-size: 0.68rem; color: var(--mid); font-style: italic; opacity: 0.7; }
+    .market-breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .market-segment { background: var(--cream); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; }
+    .market-segment h4 { font-family: sans-serif; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .market-segment p { font-family: sans-serif; font-size: 0.78rem; color: var(--mid); line-height: 1.5; }
+    .market-segment .seg-num { font-size: 1.1rem; font-weight: 800; color: var(--sage); }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--cream); }
+    .quotes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .quote-card {
+      background: var(--warm); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.8rem; position: relative;
+    }
+    .quote-mark { font-size: 3rem; color: var(--border); line-height: 0.5; font-family: Georgia, serif; margin-bottom: 0.8rem; display: block; }
+    .quote-text { font-size: 0.95rem; color: var(--charcoal); line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
+    .quote-author { font-family: sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--mid); }
+
+    /* TEAM */
+    .team { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .team-card {
+      display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap;
+      background: var(--cream); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem;
+    }
+    .team-photo-wrap { flex-shrink: 0; }
+    .team-photo {
+      width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+      border: 4px solid var(--border); display: block;
+    }
+    .team-info { flex: 1; min-width: 240px; }
+    .team-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .team-role { font-family: sans-serif; font-size: 0.85rem; color: var(--terracotta); font-weight: 600; margin-bottom: 1.2rem; }
+    .team-bio { font-size: 0.95rem; color: var(--charcoal); line-height: 1.75; margin-bottom: 1.4rem; }
+    .team-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .team-link {
+      font-family: sans-serif; font-size: 0.82rem; font-weight: 600;
+      color: var(--sage); border: 1.5px solid var(--sage); padding: 0.4rem 1rem;
+      border-radius: 4px; text-decoration: none; transition: all 0.2s;
+    }
+    .team-link:hover { background: var(--sage); color: white; }
+
+    /* FEEDBACK */
+    .feedback { background: var(--cream); }
+    .feedback h2 { max-width: 600px; }
+    .feedback-form { max-width: 680px; margin-top: 2rem; }
+    .feedback-question { margin-bottom: 1.8rem; }
+    .feedback-question label {
+      display: block; font-family: sans-serif; font-size: 0.88rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 0.5rem;
+    }
+    .feedback-question label span { color: var(--terracotta); }
+    .feedback-question textarea {
+      width: 100%; padding: 0.85rem 1rem; border: 1.5px solid var(--border);
+      border-radius: 6px; font-family: sans-serif; font-size: 0.9rem;
+      color: var(--charcoal); background: white; resize: vertical;
+      min-height: 90px; outline: none; transition: border-color 0.2s; line-height: 1.6;
+    }
+    .feedback-question textarea:focus { border-color: var(--sage); }
+    .feedback-note { font-family: sans-serif; font-size: 0.78rem; color: var(--mid); margin-top: 0.4rem; }
+    .feedback-success {
+      display: none; background: var(--sage); color: white;
+      padding: 1.2rem 1.5rem; border-radius: 8px; font-family: sans-serif;
+      font-size: 0.95rem; margin-top: 1rem; line-height: 1.6;
+    }
+
     /* HOW IT WORKS */
     .how { background: var(--cream); }
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
@@ -461,6 +542,53 @@
   </div>
 </section>
 
+<!-- MARKET OPPORTUNITY -->
+<section class="market">
+  <div class="container">
+    <div class="section-label">Market Opportunity</div>
+    <h2>A large problem. A clear market.</h2>
+    <p class="lead">My Village sits at the intersection of three growing markets in North America — childcare, senior care, and community platforms. We're starting in Seattle and building toward scale.</p>
+    <div class="tam-grid">
+      <div class="tam-card">
+        <div class="tam-label tam">TAM — Total Addressable Market</div>
+        <div class="tam-number">$190B</div>
+        <div class="tam-desc">Total North American childcare + senior home &amp; companion care market</div>
+        <div class="tam-source">IBISWorld 2023; Grand View Research 2024</div>
+      </div>
+      <div class="tam-card">
+        <div class="tam-label sam">SAM — Serviceable Addressable Market</div>
+        <div class="tam-number">$18B</div>
+        <div class="tam-desc">Tech-enabled peer-to-peer community care platforms in urban North America</div>
+        <div class="tam-source">Est. ~9% of TAM based on urban digital adoption in target demographics</div>
+      </div>
+      <div class="tam-card">
+        <div class="tam-label som">SOM — Serviceable Obtainable Market</div>
+        <div class="tam-number">$45M</div>
+        <div class="tam-desc">Seattle metro area: ~180,000 target households × $250/year avg. platform value</div>
+        <div class="tam-source">King County Census data 2024; internal estimate</div>
+      </div>
+    </div>
+    <p class="lead" style="margin-bottom: 1.5rem; font-size: 0.95rem;">The three markets we operate in:</p>
+    <div class="market-breakdown">
+      <div class="market-segment">
+        <h4>👶 Childcare (North America)</h4>
+        <p><span class="seg-num">$60B</span> market growing at 3.3% CAGR. 1 in 3 families struggle to afford formal care. Informal and cooperative childcare is an underserved segment.</p>
+        <p style="margin-top: 0.4rem; font-size: 0.72rem; font-style: italic; color: var(--mid);">IBISWorld, 2023</p>
+      </div>
+      <div class="market-segment">
+        <h4>🧓 Senior Home &amp; Companion Care</h4>
+        <p><span class="seg-num">$130B</span> market in North America. Senior companion and social services are the fastest-growing sub-segment as the 65+ population expands.</p>
+        <p style="margin-top: 0.4rem; font-size: 0.72rem; font-style: italic; color: var(--mid);">Grand View Research, 2024</p>
+      </div>
+      <div class="market-segment">
+        <h4>🏘️ Community &amp; Neighborhood Platforms</h4>
+        <p><span class="seg-num">$5B+</span> and growing. Nextdoor's model proves demand for hyperlocal community — but leaves the human connection problem unsolved.</p>
+        <p style="margin-top: 0.4rem; font-size: 0.72rem; font-style: italic; color: var(--mid);">Statista / Nextdoor S-1 filing, 2021; updated 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PERSONAS -->
 <section class="personas">
   <div class="container">
@@ -561,6 +689,32 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-label">Early Conversations</div>
+    <h2>People already feel this need.</h2>
+    <p class="lead">Before writing a single line of code, we talked to real people. Here's what they told us.</p>
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">We spend over $3,000 a month on childcare for two kids. If I could find a trusted neighbor or a retired person nearby who genuinely loves kids, it would change everything for our family budget.</p>
+        <div class="quote-author">Josh — Father of 2, Kirkland, WA</div>
+      </div>
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">I moved to Seattle not knowing anyone, then got pregnant. Now I have a baby and no time to make friends. I don't need an app to scroll — I need a community around me.</p>
+        <div class="quote-author">Valerie — Mother of a 7-month-old, Seattle, WA</div>
+      </div>
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">My father is Venezuelan. He'd love someone to cook him a meal from home, speak Spanish with him, and just be a friend. Not a caretaker. A friend. There's no platform for that.</p>
+        <div class="quote-author">Karon — Co.Motion Seattle</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -832,12 +986,69 @@
   </div>
 </section>
 
+<!-- TEAM -->
+<section class="team">
+  <div class="container">
+    <div class="section-label">The Founder</div>
+    <h2>Built by someone who lives the problem.</h2>
+    <div class="team-card">
+      <div class="team-photo-wrap">
+        <img class="team-photo" src="images/ilaria.jpg" alt="Ilaria Reale" />
+      </div>
+      <div class="team-info">
+        <div class="team-name">Ilaria Reale</div>
+        <div class="team-role">Founder · Business Development &amp; Sustainability Specialist</div>
+        <p class="team-bio">
+          I'm Italian-born, Seattle-based, and I know firsthand what it feels like to build a life in a new city without a safety net. I moved from Rome to Seattle and immediately felt the gap: no family nearby, no village, no easy way to build one. My Village started as my own problem.<br><br>
+          With an MBA in Sustainability &amp; Entrepreneurship (Università di Trento) and 4+ years building businesses across CleanTech and biotech startups in Europe and the US, I bring together strategic thinking, investor relations experience, and a deep personal connection to what this platform needs to be. I've worked across Italy, the Netherlands, and the Pacific Northwest — and I've seen this loneliness everywhere.<br><br>
+          I'm currently looking for early users, feedback, co-founders, and advisors who believe community infrastructure is the next big opportunity.
+        </p>
+        <div class="team-links">
+          <a class="team-link" href="https://linkedin.com/in/ilariareale" target="_blank">LinkedIn →</a>
+          <a class="team-link" href="mailto:ilariareale24@gmail.com">Get in Touch →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEEDBACK -->
+<section class="feedback" id="feedback">
+  <div class="container">
+    <div class="section-label">Share Your Thoughts</div>
+    <h2>Help us build the right thing.</h2>
+    <p class="lead">Three quick questions. Your answers will directly shape what we build. There are no right or wrong answers — just your honest experience.</p>
+    <form class="feedback-form" id="feedbackForm" onsubmit="handleFeedback(event)">
+      <div class="feedback-question">
+        <label>1. Have you personally experienced the challenge of finding community, childcare support, or connection in your city? <span>Tell us your story.</span></label>
+        <textarea placeholder="e.g. I moved here 2 years ago and still feel like I don't know my neighbors..."></textarea>
+      </div>
+      <div class="feedback-question">
+        <label>2. Would you use an app like My Village? <span>What would make you sign up — and what would make you hesitate?</span></label>
+        <textarea placeholder="e.g. I'd sign up if I could see who's nearby first before sharing anything personal..."></textarea>
+      </div>
+      <div class="feedback-question">
+        <label>3. Is there a specific community need you have right now that you don't know how to solve? <span>Anything goes.</span></label>
+        <textarea placeholder="e.g. I need someone to pick up my kids twice a week, or my dad is lonely and I live far away..."></textarea>
+        <p class="feedback-note">Your answer might become the next feature we build.</p>
+      </div>
+      <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+        <input type="email" placeholder="Your email (optional — only if you want a reply)" style="flex:1; min-width:220px; padding:0.85rem 1.2rem; border:1.5px solid var(--border); border-radius:5px; font-size:0.9rem; font-family:sans-serif; outline:none;" />
+        <button type="submit" class="btn-primary">Send My Feedback →</button>
+      </div>
+    </form>
+    <div class="feedback-success" id="feedbackSuccess">
+      Thank you — this means a lot. We read every single response personally and will follow up if you left your email. You're helping build something real.
+    </div>
+  </div>
+</section>
+
 <!-- SIGNUP -->
 <section class="signup" id="signup">
   <div class="container">
     <div class="section-label">Early Access</div>
-    <h2>We're validating this idea — and we'd love to hear from you.</h2>
-    <p class="sub">Tell us who you are and we'll reach out personally. No spam. Just a real conversation.</p>
+    <h2>Stay in the loop.</h2>
+    <p class="sub">Leave your email and we'll reach out when My Village launches in your neighborhood.</p>
     <form class="signup-form" id="waitlistForm" onsubmit="handleSubmit(event)">
       <input type="email" placeholder="Your email address" required />
       <select>
@@ -851,9 +1062,9 @@
       </select>
       <button type="submit" class="btn-primary">Join Waitlist →</button>
     </form>
-    <p class="form-note">No commitment. Just a conversation about whether this matters to you.</p>
+    <p class="form-note">No spam. No commitment. Just a heads-up when we're ready.</p>
     <div class="success-msg" id="successMsg">
-      Thank you! We'll reach out soon. You're helping us build something meaningful.
+      You're on the list! We'll be in touch when My Village launches near you.
     </div>
   </div>
 </section>
@@ -868,6 +1079,11 @@
     e.preventDefault();
     document.getElementById('waitlistForm').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
+  }
+  function handleFeedback(e) {
+    e.preventDefault();
+    document.getElementById('feedbackForm').style.display = 'none';
+    document.getElementById('feedbackSuccess').style.display = 'block';
   }
 </script>
 
