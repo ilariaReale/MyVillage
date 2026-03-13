@@ -356,6 +356,41 @@
     }
     .feedback-question textarea:focus { border-color: var(--sage); }
     .feedback-note { font-family: sans-serif; font-size: 0.78rem; color: var(--mid); margin-top: 0.4rem; }
+    .profile-block {
+      background: white; border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 1.2rem 1.4rem; margin-bottom: 2rem;
+    }
+    .profile-block .block-title {
+      font-family: sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--sage); margin-bottom: 1rem;
+    }
+    .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .profile-grid .full { grid-column: 1 / -1; }
+    .profile-field label {
+      display: block; font-family: sans-serif; font-size: 0.82rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 0.35rem;
+    }
+    .profile-field select, .profile-field input[type="text"] {
+      width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border);
+      border-radius: 6px; font-family: sans-serif; font-size: 0.88rem;
+      color: var(--charcoal); background: white; outline: none; transition: border-color 0.2s;
+    }
+    .profile-field select:focus, .profile-field input[type="text"]:focus { border-color: var(--sage); }
+    .radio-group { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.35rem; }
+    .radio-group label {
+      display: flex; align-items: center; gap: 0.35rem; font-family: sans-serif;
+      font-size: 0.82rem; font-weight: 400; color: var(--charcoal);
+      background: var(--warm); border: 1.5px solid var(--border); border-radius: 20px;
+      padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.2s;
+    }
+    .radio-group input[type="radio"] { display: none; }
+    .radio-group input[type="radio"]:checked + span {
+      font-weight: 700;
+    }
+    .radio-group label:has(input[type="radio"]:checked) {
+      background: var(--sage); color: white; border-color: var(--sage);
+    }
+    @media (max-width: 560px) { .profile-grid { grid-template-columns: 1fr; } }
     .feedback-success {
       display: none; background: var(--sage); color: white;
       padding: 1.2rem 1.5rem; border-radius: 8px; font-family: sans-serif;
@@ -1019,6 +1054,53 @@
     <h2>Help us build the right thing.</h2>
     <p class="lead">Three quick questions. Your answers will directly shape what we build. There are no right or wrong answers — just your honest experience.</p>
     <form class="feedback-form" id="feedbackForm" action="https://formspree.io/f/xbdzklpg" method="POST">
+
+      <!-- PROFILE BLOCK -->
+      <div class="profile-block">
+        <div class="block-title">Tell us a little about yourself — takes 30 seconds</div>
+        <div class="profile-grid">
+
+          <div class="profile-field">
+            <label>Where do you live?</label>
+            <input type="text" name="location" placeholder="e.g. Capitol Hill, Seattle" />
+          </div>
+
+          <div class="profile-field">
+            <label>Age range</label>
+            <select name="age_range">
+              <option value="">Select...</option>
+              <option>18–24</option>
+              <option>25–34</option>
+              <option>35–44</option>
+              <option>45–54</option>
+              <option>55–64</option>
+              <option>65+</option>
+            </select>
+          </div>
+
+          <div class="profile-field full">
+            <label>How many times have you relocated in your life?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="relocations" value="Never" /><span>Never</span></label>
+              <label><input type="radio" name="relocations" value="Once" /><span>Once</span></label>
+              <label><input type="radio" name="relocations" value="2–3 times" /><span>2–3 times</span></label>
+              <label><input type="radio" name="relocations" value="4+ times" /><span>4+ times</span></label>
+            </div>
+          </div>
+
+          <div class="profile-field full">
+            <label>Do you have family living far away?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="family_distance" value="Same city" /><span>Same city</span></label>
+              <label><input type="radio" name="family_distance" value="Different city" /><span>Different city</span></label>
+              <label><input type="radio" name="family_distance" value="Different country" /><span>Different country</span></label>
+              <label><input type="radio" name="family_distance" value="Different continent" /><span>Different continent</span></label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <div class="feedback-question">
         <label>1. Have you personally experienced the challenge of finding community, childcare support, or connection in your city? <span>Tell us your story.</span></label>
         <textarea name="q1_experience" placeholder="e.g. I moved here 2 years ago and still feel like I don't know my neighbors..."></textarea>
