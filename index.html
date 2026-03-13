@@ -241,6 +241,45 @@
     .mock-nav-item.on .mock-nav-label { color: var(--app-pink); font-weight: 700; }
     .mock-nav-bar { width: 20px; height: 2px; background: var(--app-pink); border-radius: 1px; margin-bottom: 3px; }
 
+    /* PERSONAS */
+    .personas { background: var(--cream); }
+    .neighborhood-group { margin-bottom: 3.5rem; }
+    .neighborhood-group:last-child { margin-bottom: 0; }
+    .neighborhood-label {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--sage); color: white; font-family: sans-serif;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;
+    }
+    .village-pair-cards { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .persona-card {
+      background: var(--warm); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; flex: 1; min-width: 220px; max-width: 300px;
+    }
+    .persona-card.solo { max-width: 360px; }
+    .persona-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--app-pink), var(--terracotta-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 0.8rem;
+    }
+    .persona-avatar.sage { background: linear-gradient(135deg, var(--sage), var(--sage-light)); }
+    .persona-avatar.terra { background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light)); }
+    .persona-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .persona-meta { font-family: sans-serif; font-size: 0.78rem; color: var(--mid); margin-bottom: 0.8rem; }
+    .persona-bio { font-size: 0.87rem; color: var(--charcoal); line-height: 1.65; margin-bottom: 1rem; }
+    .persona-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .persona-tag { font-family: sans-serif; font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+    .tag-offers { background: #E8F0E8; color: var(--sage); }
+    .tag-needs { background: #FDE8ED; color: var(--app-pink); }
+    .village-match {
+      background: white; border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem 1.4rem; font-size: 0.9rem; color: var(--charcoal);
+      border-left: 3px solid var(--terracotta);
+      display: flex; align-items: flex-start; gap: 0.8rem; line-height: 1.6;
+    }
+    .village-match-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+
     /* HOW IT WORKS */
     .how { background: var(--cream); }
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
@@ -415,6 +454,109 @@
         <p>Track your connections, offers made, and Village Score. A reputation system built on generosity, not followers.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PERSONAS -->
+<section class="personas">
+  <div class="container">
+    <div class="section-label">Real People, Real Connections</div>
+    <h2>Meet the village.</h2>
+    <p class="lead">Different lives, different needs — but close enough to help each other. This is who My Village is built for.</p>
+
+    <!-- CAPITOL HILL -->
+    <div class="neighborhood-group">
+      <div class="neighborhood-label">📍 Capitol Hill, Seattle</div>
+      <div class="village-pair-cards">
+        <div class="persona-card">
+          <div class="persona-avatar sage">♟️</div>
+          <div class="persona-name">George Alderman</div>
+          <div class="persona-meta">72 · Retired Professor · Senior</div>
+          <div class="persona-bio">Spent 40 years teaching history at UW. Now lives alone in a sunny apartment on 15th Ave. Afternoons are wide open. Loves chess, Italian cooking, and slow mornings with the newspaper.</div>
+          <div class="persona-tags">
+            <span class="persona-tag tag-offers">Offers: afternoon time</span>
+            <span class="persona-tag tag-offers">Offers: chess lessons</span>
+            <span class="persona-tag tag-needs">Needs: purpose</span>
+            <span class="persona-tag tag-needs">Needs: companionship</span>
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-avatar terra">👩‍👧‍👦</div>
+          <div class="persona-name">Valeria Torres</div>
+          <div class="persona-meta">36 · UX Designer · Family</div>
+          <div class="persona-bio">Single mom of Leo (8) and Sofia (2). Works remotely and loves her job — but 3–6pm is chaos. Leo needs someone after school. Sofia needs attention while Valeria finishes her last meetings of the day.</div>
+          <div class="persona-tags">
+            <span class="persona-tag tag-offers">Offers: home-cooked meals</span>
+            <span class="persona-tag tag-offers">Offers: warm community spirit</span>
+            <span class="persona-tag tag-needs">Needs: afternoon childcare help</span>
+            <span class="persona-tag tag-needs">Needs: activities for Leo</span>
+          </div>
+        </div>
+      </div>
+      <div class="village-match">
+        <div class="village-match-icon">✨</div>
+        <div><strong>My Village match:</strong> George picks up Leo from school on Tuesdays and Thursdays. Leo is learning chess — and loves it. George stays for dinner most weeks. Valeria's Sunday pasta has become a Capitol Hill tradition for both of them.</div>
+      </div>
+    </div>
+
+    <!-- SOUTH LAKE UNION -->
+    <div class="neighborhood-group">
+      <div class="neighborhood-label">📍 South Lake Union, Seattle</div>
+      <div class="village-pair-cards">
+        <div class="persona-card">
+          <div class="persona-avatar">🚴‍♀️</div>
+          <div class="persona-name">Maya Chen</div>
+          <div class="persona-meta">29 · Software Engineer · Individual</div>
+          <div class="persona-bio">Moved from Chicago 4 months ago for a tech job. Loves biking the Burke-Gilman trail, painting, and gardening — but has no garden, no friends yet, and an apartment that feels too quiet on weekends.</div>
+          <div class="persona-tags">
+            <span class="persona-tag tag-offers">Offers: AI &amp; tech skills</span>
+            <span class="persona-tag tag-offers">Offers: biking buddy</span>
+            <span class="persona-tag tag-needs">Needs: community &amp; friends</span>
+            <span class="persona-tag tag-needs">Needs: garden to tend</span>
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-avatar sage">🎨</div>
+          <div class="persona-name">Karon Williams</div>
+          <div class="persona-meta">65 · Retired Art Teacher · Senior</div>
+          <div class="persona-bio">Taught art for 30 years. Still paints watercolors every morning. Has a small garden, a studio full of supplies, and a sharp mind that wants to keep learning — especially how AI can enhance her creative work.</div>
+          <div class="persona-tags">
+            <span class="persona-tag tag-offers">Offers: painting &amp; art lessons</span>
+            <span class="persona-tag tag-offers">Offers: garden space</span>
+            <span class="persona-tag tag-needs">Needs: help with AI tools</span>
+            <span class="persona-tag tag-needs">Needs: younger company</span>
+          </div>
+        </div>
+      </div>
+      <div class="village-match">
+        <div class="village-match-icon">✨</div>
+        <div><strong>My Village match:</strong> Karon and Maya meet every Saturday morning. Karon teaches watercolor painting in her studio; Maya shows Karon how to use AI tools for her artwork. Maya now tends a corner of Karon's garden — and has her first tomatoes coming in.</div>
+      </div>
+    </div>
+
+    <!-- KIRKLAND -->
+    <div class="neighborhood-group">
+      <div class="neighborhood-label">📍 Totem Lake, Kirkland</div>
+      <div class="village-pair-cards">
+        <div class="persona-card solo">
+          <div class="persona-avatar">💻</div>
+          <div class="persona-name">Arjun Sharma</div>
+          <div class="persona-meta">33 · Software Engineer at Microsoft · Individual</div>
+          <div class="persona-bio">Originally from Bangalore, now based in Kirkland. Every year he spends 2–3 months in India visiting family. The house sits empty, the plants die, and the mail piles up. He doesn't need a house-sitter agency — he needs neighbors he can actually trust.</div>
+          <div class="persona-tags">
+            <span class="persona-tag tag-offers">Offers: tech help</span>
+            <span class="persona-tag tag-offers">Offers: Indian cooking &amp; cultural exchange</span>
+            <span class="persona-tag tag-needs">Needs: trusted house watch</span>
+            <span class="persona-tag tag-needs">Needs: real neighborhood connection</span>
+          </div>
+        </div>
+      </div>
+      <div class="village-match">
+        <div class="village-match-icon">🔍</div>
+        <div><strong>Finding Arjun's village:</strong> My Village is connecting Arjun with neighbors on his Kirkland block — people who check in, water his plants, and collect his mail while he's away. In return, Arjun hosts a Diwali dinner for the whole street every November when he comes back.</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
