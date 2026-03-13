@@ -21,16 +21,17 @@
       --border: #E0D8CC;
       --app-pink: #C85F78;
       --app-bg: #EEF2F0;
+      --nav-h: 52px;
     }
 
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Georgia', serif; background: var(--cream); color: var(--charcoal); line-height: 1.7; }
+    html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+    body { font-family: 'Georgia', serif; background: var(--cream); color: var(--charcoal); line-height: 1.6; }
 
     /* ── NAV ── */
     nav {
-      position: sticky; top: 0; background: var(--cream);
-      border-bottom: 1px solid var(--border);
-      padding: 0.85rem 2rem; display: flex; justify-content: space-between;
+      position: sticky; top: 0; height: var(--nav-h);
+      background: var(--cream); border-bottom: 1px solid var(--border);
+      padding: 0 2rem; display: flex; justify-content: space-between;
       align-items: center; z-index: 100;
     }
     .logo { font-size: 1.1rem; font-weight: bold; color: var(--sage); letter-spacing: 0.02em; text-decoration: none; }
@@ -39,7 +40,7 @@
       font-family: sans-serif; font-size: 0.82rem; font-weight: 600;
       color: var(--mid); text-decoration: none; transition: color 0.2s;
     }
-    .nav-links a.nav-link:hover { color: var(--charcoal); }
+    .nav-links a.nav-link:hover, .nav-links a.nav-link.active { color: var(--charcoal); }
     .nav-links a.nav-cta {
       background: var(--terracotta); color: white; text-decoration: none;
       padding: 0.45rem 1.1rem; border-radius: 4px; font-family: sans-serif;
@@ -48,305 +49,297 @@
     .nav-links a.nav-cta:hover { background: var(--terracotta-light); }
     @media (max-width: 768px) { .nav-links a.nav-link { display: none; } }
 
-    /* ── HERO ── */
-    .hero { background: var(--warm); padding: 6rem 2rem 5rem; text-align: center; border-bottom: 1px solid var(--border); }
-    .hero .eyebrow {
-      font-family: sans-serif; font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.2rem;
+    /* ── FULL-SCREEN SECTIONS ── */
+    section {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex; align-items: center;
+      padding: 3rem 2rem;
+      border-top: 3px solid var(--border);
+      scroll-snap-align: start;
     }
-    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.2; color: var(--charcoal); max-width: 780px; margin: 0 auto 1.5rem; }
-    .hero h1 span { color: var(--sage); }
-    .hero .subtitle { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--mid); max-width: 580px; margin: 0 auto 2.5rem; }
-    .hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    section:nth-of-type(odd)  { background: var(--cream); }
+    section:nth-of-type(even) { background: var(--warm); }
+
+    /* accent top borders */
+    .hero-section { border-top: none !important; background: var(--warm) !important; }
+    .problem      { border-top-color: var(--terracotta); }
+    .vision       { border-top-color: var(--sage-light); }
+    .solution     { border-top-color: var(--sage); }
+    .how          { border-top-color: var(--sage-light); }
+    .preview      { border-top-color: var(--terracotta-light); }
+    .testimonials { border-top-color: var(--app-pink); }
+    .users        { border-top-color: var(--border); }
+    .personas     { border-top-color: var(--sage); }
+    .market       { border-top-color: var(--terracotta); }
+    .team         { border-top-color: var(--sage); }
+    .feedback     { border-top-color: var(--app-pink); align-items: flex-start; overflow-y: auto; padding-top: 3.5rem; }
+    .signup       { border-top-color: var(--terracotta-light); }
+
+    .container { max-width: 960px; margin: 0 auto; width: 100%; }
+
+    .section-label {
+      font-family: sans-serif; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.5rem;
+    }
+    h2 { font-size: clamp(1.5rem, 2.8vw, 2.2rem); line-height: 1.2; margin-bottom: 0.8rem; color: var(--charcoal); }
+    .lead { color: var(--mid); max-width: 640px; font-size: 0.98rem; margin-bottom: 1.8rem; line-height: 1.6; }
+
+    /* ── FADE-IN ── */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── HERO ── */
+    .hero-section { text-align: center; justify-content: center; flex-direction: column; }
+    .hero-section .eyebrow {
+      font-family: sans-serif; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1rem;
+    }
+    .hero-section h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.2; color: var(--charcoal); max-width: 760px; margin: 0 auto 1.2rem; }
+    .hero-section h1 span { color: var(--sage); }
+    .hero-section .subtitle { font-size: clamp(0.95rem, 1.8vw, 1.1rem); color: var(--mid); max-width: 540px; margin: 0 auto 2rem; }
+    .hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 3rem; }
+
     .btn-primary {
       background: var(--terracotta); color: white; border: none;
-      padding: 0.9rem 2rem; border-radius: 5px; font-family: sans-serif;
-      font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s;
+      padding: 0.85rem 1.8rem; border-radius: 5px; font-family: sans-serif;
+      font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s;
     }
     .btn-primary:hover { background: var(--terracotta-light); }
     .btn-secondary {
       background: transparent; color: var(--sage); border: 2px solid var(--sage);
-      padding: 0.9rem 2rem; border-radius: 5px; font-family: sans-serif;
-      font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: all 0.2s;
+      padding: 0.85rem 1.8rem; border-radius: 5px; font-family: sans-serif;
+      font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: all 0.2s;
     }
     .btn-secondary:hover { background: var(--sage); color: white; }
 
-    /* ── STATS ── */
-    .stats {
-      background: var(--sage); color: white;
+    /* ── STATS STRIP (inside hero) ── */
+    .stats-strip {
+      background: var(--sage); color: white; border-radius: 10px;
       display: flex; justify-content: center; align-items: center;
-      flex-wrap: nowrap; padding: 1.2rem 2rem; text-align: center;
+      max-width: 760px; margin: 0 auto; padding: 1rem 0;
     }
-    .stat-item { flex: 1; max-width: 320px; padding: 0.6rem 1.5rem; }
+    .stat-item { flex: 1; padding: 0.4rem 1.4rem; text-align: center; }
     .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,0.25); }
-    .stat-item .number { font-size: 1.6rem; font-weight: bold; display: block; line-height: 1.2; }
-    .stat-item .label { font-family: sans-serif; font-size: 0.72rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.07em; margin-top: 0.2rem; display: block; }
-    .stat-item .source { font-family: sans-serif; font-size: 0.6rem; opacity: 0.5; margin-top: 0.2rem; font-style: italic; display: block; }
-    @media (max-width: 640px) {
-      .stats { flex-wrap: wrap; padding: 1.5rem 1rem; }
-      .stat-item + .stat-item { border-left: none; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem; margin-top: 0.5rem; }
-    }
-
-    /* ── SECTION DEFAULTS ── */
-    section { padding: 5rem 2rem; border-top: 3px solid transparent; }
-    section:nth-of-type(odd)  { background: var(--cream); border-top-color: var(--border); }
-    section:nth-of-type(even) { background: var(--warm);  border-top-color: var(--border); }
-
-    /* Per-section accent colors on the top border */
-    .problem  { border-top-color: var(--terracotta) !important; }
-    .vision   { border-top-color: var(--sage-light) !important; }
-    .solution { border-top-color: var(--sage) !important; }
-    .how      { border-top-color: var(--sage-light) !important; }
-    .preview  { border-top-color: var(--terracotta-light) !important; }
-    .testimonials { border-top-color: var(--app-pink) !important; }
-    .users    { border-top-color: var(--border) !important; }
-    .personas { border-top-color: var(--sage) !important; }
-    .market   { border-top-color: var(--terracotta) !important; }
-    .team     { border-top-color: var(--sage) !important; }
-    .feedback { border-top-color: var(--app-pink) !important; }
-    .signup   { border-top-color: var(--terracotta-light) !important; }
-
-    .container { max-width: 960px; margin: 0 auto; }
-    .section-label {
-      font-family: sans-serif; font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.8rem;
-    }
-    h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.25; margin-bottom: 1.2rem; color: var(--charcoal); }
-    .lead { color: var(--mid); max-width: 640px; font-size: 1.05rem; margin-bottom: 3rem; }
-
-    /* ── FADE-IN ANIMATION ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: none;
-    }
+    .stat-item .number { font-size: 1.5rem; font-weight: bold; display: block; line-height: 1.2; }
+    .stat-item .label { font-family: sans-serif; font-size: 0.68rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.07em; margin-top: 0.15rem; display: block; }
+    .stat-item .source { font-family: sans-serif; font-size: 0.58rem; opacity: 0.5; margin-top: 0.1rem; font-style: italic; display: block; }
 
     /* ── PROBLEM ── */
-    .problem { background: var(--cream); }
-    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-    .problem-card { background: var(--warm); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem 1.5rem; }
-    .problem-card .icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-    .problem-card h3 { font-size: 1rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.5rem; }
-    .problem-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.6; }
+    .problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .problem-card { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.3rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .problem-icon { width: 38px; height: 38px; border-radius: 8px; background: var(--warm); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .problem-card h3 { font-size: 0.9rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.3rem; }
+    .problem-card p { font-size: 0.82rem; color: var(--mid); line-height: 1.5; }
 
     /* ── VISION ── */
-    .vision { background: var(--sage); color: white; }
+    .vision { background: var(--sage) !important; color: white; }
     .vision h2 { color: white; }
-    .vision p { color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 680px; margin-bottom: 1.2rem; }
     .vision .section-label { color: rgba(255,255,255,0.6); }
+    .vision p { color: rgba(255,255,255,0.85); font-size: 1rem; max-width: 680px; margin-bottom: 1rem; }
 
     /* ── SOLUTION ── */
-    .solution { background: var(--cream); }
-    .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-    .solution-card { border-left: 3px solid var(--sage); padding: 1.2rem 1.5rem; background: var(--warm); border-radius: 0 8px 8px 0; }
-    .solution-card h3 { font-family: sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--sage); }
-    .solution-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+    .solution-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .solution-card { border-left: 3px solid var(--sage); padding: 1rem 1.2rem; background: var(--warm); border-radius: 0 8px 8px 0; }
+    .solution-card h3 { font-family: sans-serif; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.3rem; color: var(--sage); }
+    .solution-card p { font-size: 0.82rem; color: var(--mid); line-height: 1.5; }
 
     /* ── HOW IT WORKS ── */
-    .how { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .step { text-align: center; }
     .step-num {
-      width: 48px; height: 48px; border-radius: 50%; background: var(--sage); color: white;
-      font-family: sans-serif; font-weight: 700; font-size: 1.2rem;
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
+      width: 44px; height: 44px; border-radius: 50%; background: var(--sage); color: white;
+      font-family: sans-serif; font-weight: 700; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem;
     }
-    .step h3 { font-size: 1rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.5rem; }
-    .step p { font-size: 0.9rem; color: var(--mid); }
+    .step h3 { font-size: 0.95rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.85rem; color: var(--mid); }
 
     /* ── PRODUCT PREVIEW ── */
-    .preview { background: var(--cream); }
+    .preview { flex-direction: column; text-align: center; }
     .preview > .container > h2 { text-align: center; }
     .preview > .container > .lead { margin-left: auto; margin-right: auto; text-align: center; }
-    .screens-row {
-      display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; align-items: flex-start;
-    }
-    .screen-wrap { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-    .screen-caption { font-family: sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--charcoal); text-align: center; letter-spacing: 0.04em; text-transform: uppercase; }
+    .screens-row { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; align-items: flex-start; }
+    .screen-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+    .screen-caption { font-family: sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--charcoal); text-align: center; letter-spacing: 0.04em; text-transform: uppercase; }
 
     /* PHONE FRAME */
-    .phone-outer {
-      background: #1C1C1E; border-radius: 36px; padding: 10px;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.22); width: 260px;
-    }
-    .phone-inner {
-      background: var(--app-bg); border-radius: 28px; overflow: hidden; height: 520px;
-      display: flex; flex-direction: column;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #1C1C1E; position: relative;
-    }
+    .phone-outer { background: #1C1C1E; border-radius: 32px; padding: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); width: 220px; }
+    .phone-inner { background: var(--app-bg); border-radius: 26px; overflow: hidden; height: 440px; display: flex; flex-direction: column; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1C1C1E; position: relative; }
     .mock-scroll { flex: 1; overflow: hidden; }
-    .mock-header { padding: 18px 16px 6px; }
-    .mock-title { font-size: 22px; font-weight: 800; letter-spacing: -0.4px; }
-    .mock-subtitle { font-size: 11px; color: #888; margin-top: 2px; }
-    .mock-chips { display: flex; gap: 6px; padding: 6px 16px; }
-    .mock-chip { padding: 3px 12px; border-radius: 14px; font-size: 11px; font-weight: 600; }
+    .mock-header { padding: 14px 14px 4px; }
+    .mock-title { font-size: 19px; font-weight: 800; letter-spacing: -0.4px; }
+    .mock-chips { display: flex; gap: 5px; padding: 5px 14px; }
+    .mock-chip { padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; }
     .mock-chip.on { background: var(--app-pink); color: white; }
     .mock-chip.off { color: #999; background: transparent; }
-    .mock-filters { display: flex; gap: 6px; padding: 6px 16px 10px; overflow-x: hidden; }
-    .mock-pill { padding: 5px 11px; border-radius: 20px; font-size: 10.5px; font-weight: 600; white-space: nowrap; }
+    .mock-filters { display: flex; gap: 5px; padding: 5px 14px 8px; overflow-x: hidden; }
+    .mock-pill { padding: 4px 9px; border-radius: 18px; font-size: 9.5px; font-weight: 600; white-space: nowrap; }
     .mock-pill.on { background: var(--app-pink); color: white; }
     .mock-pill.off { background: white; color: #555; }
-    .mock-featured { margin: 4px 12px 10px; background: #FDE8ED; border-radius: 14px; padding: 13px 14px; }
-    .mock-featured-label { font-size: 10px; color: var(--app-pink); font-weight: 600; margin-bottom: 5px; }
-    .mock-featured-name { font-size: 15px; font-weight: 800; color: #1C1C1E; margin-bottom: 4px; }
-    .mock-featured-desc { font-size: 11px; color: #666; line-height: 1.5; }
-    .mock-section-title { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #999; padding: 4px 16px 6px; }
-    .mock-neighbor { margin: 3px 12px; background: white; border-radius: 12px; padding: 10px 12px; display: flex; align-items: flex-start; gap: 10px; }
-    .mock-avatar { width: 34px; height: 34px; border-radius: 50%; background: #E5DDD5; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
-    .mock-neighbor-name { font-weight: 700; font-size: 13px; }
-    .mock-tag { display: inline-block; background: #FDE8ED; color: var(--app-pink); font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-top: 3px; }
+    .mock-featured { margin: 4px 10px 8px; background: #FDE8ED; border-radius: 12px; padding: 10px 12px; }
+    .mock-featured-label { font-size: 9px; color: var(--app-pink); font-weight: 600; margin-bottom: 4px; }
+    .mock-featured-name { font-size: 13px; font-weight: 800; color: #1C1C1E; margin-bottom: 3px; }
+    .mock-featured-desc { font-size: 10px; color: #666; line-height: 1.4; }
+    .mock-section-title { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #999; padding: 4px 14px 5px; }
+    .mock-neighbor { margin: 2px 10px; background: white; border-radius: 10px; padding: 8px 10px; display: flex; align-items: flex-start; gap: 8px; }
+    .mock-avatar { width: 30px; height: 30px; border-radius: 50%; background: #E5DDD5; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+    .mock-neighbor-name { font-weight: 700; font-size: 11px; }
+    .mock-tag { display: inline-block; background: #FDE8ED; color: var(--app-pink); font-size: 8.5px; font-weight: 700; padding: 2px 6px; border-radius: 8px; margin-top: 2px; }
     .mock-tag.green { background: #E8F0E8; color: var(--sage); }
-    .mock-bio { font-size: 10.5px; color: #777; line-height: 1.4; margin-top: 3px; }
-    .mock-chat-row { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid #F0F0F0; background: white; }
-    .mock-chat-avatar { width: 40px; height: 40px; border-radius: 50%; background: #EEF2F0; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .mock-bio { font-size: 9.5px; color: #777; line-height: 1.4; margin-top: 2px; }
+    .mock-chat-row { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-bottom: 1px solid #F0F0F0; background: white; }
+    .mock-chat-avatar { width: 34px; height: 34px; border-radius: 50%; background: #EEF2F0; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
     .mock-chat-info { flex: 1; min-width: 0; }
-    .mock-chat-name { font-weight: 700; font-size: 13px; }
-    .mock-chat-preview { font-size: 11px; color: #999; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .mock-chat-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; }
-    .mock-chat-time { font-size: 10px; color: #bbb; }
-    .mock-badge { background: var(--app-pink); color: white; font-size: 9px; font-weight: 800; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .mock-profile-top { text-align: center; padding: 18px 16px 10px; }
-    .mock-profile-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--app-pink), var(--terracotta-light)); margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
-    .mock-profile-name { font-size: 18px; font-weight: 800; }
-    .mock-profile-bio { font-size: 10.5px; color: #666; line-height: 1.5; padding: 8px 16px 0; text-align: left; }
-    .mock-profile-tag { display: inline-flex; align-items: center; gap: 4px; background: #FDE8ED; color: var(--app-pink); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; margin: 10px 16px 0; }
-    .mock-stats-row { display: flex; gap: 8px; margin: 12px 12px 0; }
-    .mock-stat-box { flex: 1; background: white; border-radius: 12px; padding: 12px 6px; text-align: center; }
-    .mock-stat-icon { font-size: 16px; display: block; margin-bottom: 3px; }
-    .mock-stat-num { font-size: 20px; font-weight: 800; display: block; }
+    .mock-chat-name { font-weight: 700; font-size: 11px; }
+    .mock-chat-preview { font-size: 10px; color: #999; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mock-chat-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+    .mock-chat-time { font-size: 9px; color: #bbb; }
+    .mock-badge { background: var(--app-pink); color: white; font-size: 8px; font-weight: 800; width: 14px; height: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .mock-profile-top { text-align: center; padding: 14px 14px 8px; }
+    .mock-profile-avatar { width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, var(--app-pink), var(--terracotta-light)); margin: 0 auto 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    .mock-profile-name { font-size: 16px; font-weight: 800; }
+    .mock-profile-bio { font-size: 9.5px; color: #666; line-height: 1.5; padding: 6px 14px 0; text-align: left; }
+    .mock-profile-tag { display: inline-flex; align-items: center; gap: 3px; background: #FDE8ED; color: var(--app-pink); font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; margin: 8px 14px 0; }
+    .mock-stats-row { display: flex; gap: 6px; margin: 10px 10px 0; }
+    .mock-stat-box { flex: 1; background: white; border-radius: 10px; padding: 10px 4px; text-align: center; }
+    .mock-stat-icon { font-size: 14px; display: block; margin-bottom: 2px; }
+    .mock-stat-num { font-size: 17px; font-weight: 800; display: block; }
     .mock-stat-num.pink { color: var(--app-pink); }
     .mock-stat-num.green { color: var(--sage); }
-    .mock-stat-label { font-size: 9px; color: #aaa; display: block; margin-top: 2px; }
-    .mock-nav { background: white; border-top: 1px solid #EBEBEB; display: flex; justify-content: space-around; padding: 8px 0 10px; flex-shrink: 0; }
-    .mock-nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; cursor: default; }
-    .mock-nav-icon { font-size: 16px; line-height: 1; }
-    .mock-nav-label { font-size: 9px; color: #aaa; font-weight: 500; }
+    .mock-stat-label { font-size: 8px; color: #aaa; display: block; margin-top: 1px; }
+    .mock-nav { background: white; border-top: 1px solid #EBEBEB; display: flex; justify-content: space-around; padding: 6px 0 8px; flex-shrink: 0; }
+    .mock-nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; }
+    .mock-nav-icon { font-size: 14px; line-height: 1; }
+    .mock-nav-label { font-size: 8px; color: #aaa; font-weight: 500; }
     .mock-nav-item.on .mock-nav-label { color: var(--app-pink); font-weight: 700; }
-    .mock-nav-bar { width: 20px; height: 2px; background: var(--app-pink); border-radius: 1px; margin-bottom: 3px; }
+    .mock-nav-bar { width: 18px; height: 2px; background: var(--app-pink); border-radius: 1px; margin-bottom: 2px; }
 
     /* ── TESTIMONIALS ── */
-    .testimonials { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .quotes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-    .quote-card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; position: relative; }
-    .quote-mark { font-size: 3rem; color: var(--border); line-height: 0.5; font-family: Georgia, serif; margin-bottom: 0.8rem; display: block; }
-    .quote-text { font-size: 0.95rem; color: var(--charcoal); line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
-    .quote-author { font-family: sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--mid); }
+    .quotes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .quote-card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; }
+    .quote-mark { font-size: 2.4rem; color: var(--border); line-height: 0.5; font-family: Georgia, serif; margin-bottom: 0.6rem; display: block; }
+    .quote-text { font-size: 0.88rem; color: var(--charcoal); line-height: 1.65; font-style: italic; margin-bottom: 1rem; }
+    .quote-author { font-family: sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--mid); }
 
     /* ── WHO IT'S FOR ── */
-    .users { background: var(--cream); }
-    .users-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
-    .user-card { background: var(--warm); border: 1px solid var(--border); border-radius: 10px; padding: 2rem 1.5rem; text-align: center; }
-    .user-card .user-emoji { font-size: 2.5rem; margin-bottom: 0.8rem; display: block; }
-    .user-card h3 { font-size: 1rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.5rem; color: var(--charcoal); }
-    .user-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+    .users-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .user-card { background: var(--warm); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem 1rem; text-align: center; }
+    .user-icon { width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 0.7rem; display: flex; align-items: center; justify-content: center; }
+    .user-card h3 { font-size: 0.9rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.4rem; color: var(--charcoal); }
+    .user-card p { font-size: 0.8rem; color: var(--mid); line-height: 1.55; }
 
     /* ── PERSONAS ── */
-    .personas { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .neighborhood-group { margin-bottom: 3.5rem; }
-    .neighborhood-group:last-child { margin-bottom: 0; }
+    .personas { flex-direction: column; justify-content: center; }
     .neighborhood-label {
       display: inline-flex; align-items: center; gap: 0.4rem;
       background: var(--sage); color: white; font-family: sans-serif;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.25rem 0.9rem; border-radius: 20px; margin-bottom: 1.2rem;
     }
-    .village-pair-cards { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .persona-card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; flex: 1; min-width: 220px; max-width: 300px; }
-    .persona-card.solo { max-width: 360px; }
-    .persona-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--app-pink), var(--terracotta-light)); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 0.8rem; }
-    .persona-avatar.sage { background: linear-gradient(135deg, var(--sage), var(--sage-light)); }
-    .persona-avatar.terra { background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light)); }
-    .persona-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.15rem; }
-    .persona-meta { font-family: sans-serif; font-size: 0.78rem; color: var(--mid); margin-bottom: 0.8rem; }
-    .persona-bio { font-size: 0.87rem; color: var(--charcoal); line-height: 1.65; margin-bottom: 1rem; }
-    .persona-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .persona-tag { font-family: sans-serif; font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+    .village-pair-cards { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .persona-card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; flex: 1; min-width: 200px; max-width: 280px; }
+    .persona-card.solo { max-width: 340px; }
+    /* Colored initial avatar replacing emoji */
+    .persona-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: sans-serif; font-size: 1rem; font-weight: 800;
+      color: white; margin-bottom: 0.7rem; flex-shrink: 0;
+    }
+    .persona-avatar.sage    { background: linear-gradient(135deg, var(--sage), var(--sage-light)); }
+    .persona-avatar.terra   { background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light)); }
+    .persona-avatar.pink    { background: linear-gradient(135deg, var(--app-pink), #E8956D); }
+    .persona-avatar.charcoal { background: linear-gradient(135deg, #4A5568, #718096); }
+    .persona-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.1rem; }
+    .persona-meta { font-family: sans-serif; font-size: 0.72rem; color: var(--mid); margin-bottom: 0.6rem; }
+    .persona-bio { font-size: 0.8rem; color: var(--charcoal); line-height: 1.55; margin-bottom: 0.8rem; }
+    .persona-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .persona-tag { font-family: sans-serif; font-size: 0.65rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
     .tag-offers { background: #E8F0E8; color: var(--sage); }
-    .tag-needs { background: #FDE8ED; color: var(--app-pink); }
-    .village-match { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.4rem; font-size: 0.9rem; color: var(--charcoal); border-left: 3px solid var(--terracotta); display: flex; align-items: flex-start; gap: 0.8rem; line-height: 1.6; }
-    .village-match-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .tag-needs  { background: #FDE8ED; color: var(--app-pink); }
+    .village-match { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem 1.2rem; font-size: 0.84rem; color: var(--charcoal); border-left: 3px solid var(--terracotta); display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.55; }
+    .village-match-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
 
     /* ── MARKET OPPORTUNITY ── */
-    .market { background: var(--cream); }
-    .tam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
-    .tam-card { background: var(--warm); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem 1.5rem; text-align: center; }
-    .tam-label { font-family: sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .tam-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .tam-card { background: var(--warm); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem 1.2rem; text-align: center; }
+    .tam-label { font-family: sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .tam-label.tam { color: var(--sage); }
     .tam-label.sam { color: var(--terracotta); }
     .tam-label.som { color: var(--app-pink); }
-    .tam-number { font-size: 2.4rem; font-weight: 800; color: var(--charcoal); line-height: 1; margin-bottom: 0.5rem; }
-    .tam-desc { font-family: sans-serif; font-size: 0.82rem; color: var(--mid); line-height: 1.5; margin-bottom: 0.6rem; }
-    .tam-source { font-family: sans-serif; font-size: 0.68rem; color: var(--mid); font-style: italic; opacity: 0.7; }
-    .market-breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .market-segment { background: var(--warm); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; }
-    .market-segment h4 { font-family: sans-serif; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .market-segment p { font-family: sans-serif; font-size: 0.78rem; color: var(--mid); line-height: 1.5; }
-    .market-segment .seg-num { font-size: 1.1rem; font-weight: 800; color: var(--sage); }
+    .tam-number { font-size: 2rem; font-weight: 800; color: var(--charcoal); line-height: 1; margin-bottom: 0.4rem; }
+    .tam-desc { font-family: sans-serif; font-size: 0.78rem; color: var(--mid); line-height: 1.45; margin-bottom: 0.4rem; }
+    .tam-source { font-family: sans-serif; font-size: 0.62rem; color: var(--mid); font-style: italic; opacity: 0.7; }
+    .market-breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+    .market-segment { background: var(--warm); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; }
+    .market-segment h4 { font-family: sans-serif; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.4rem; }
+    .market-segment p { font-family: sans-serif; font-size: 0.74rem; color: var(--mid); line-height: 1.5; }
+    .market-segment .seg-num { font-size: 1rem; font-weight: 800; color: var(--sage); }
+
+    /* market SVG icons */
+    .seg-icon { width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border-radius: 5px; flex-shrink: 0; }
+    .seg-icon.green { background: #E8F0E8; }
+    .seg-icon.terra  { background: #FDE8ED; }
+    .seg-icon.blue  { background: #E8EEF5; }
 
     /* ── TEAM ── */
-    .team { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .team-card { display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap; background: var(--cream); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem; }
-    .team-photo-wrap { flex-shrink: 0; }
-    .team-photo { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid var(--border); display: block; }
-    .team-info { flex: 1; min-width: 240px; }
-    .team-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .team-role { font-family: sans-serif; font-size: 0.85rem; color: var(--terracotta); font-weight: 600; margin-bottom: 1.2rem; }
-    .team-bio { font-size: 0.95rem; color: var(--charcoal); line-height: 1.75; margin-bottom: 1.4rem; }
+    .team-card { display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap; background: var(--cream); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
+    .team-photo { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--border); display: block; flex-shrink: 0; }
+    .team-info { flex: 1; min-width: 220px; }
+    .team-name { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .team-role { font-family: sans-serif; font-size: 0.82rem; color: var(--terracotta); font-weight: 600; margin-bottom: 1rem; }
+    .team-bio { font-size: 0.88rem; color: var(--charcoal); line-height: 1.7; margin-bottom: 1.2rem; }
     .team-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    .team-link { font-family: sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--sage); border: 1.5px solid var(--sage); padding: 0.4rem 1rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+    .team-link { font-family: sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--sage); border: 1.5px solid var(--sage); padding: 0.35rem 0.9rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
     .team-link:hover { background: var(--sage); color: white; }
 
     /* ── FEEDBACK ── */
-    .feedback { background: var(--cream); }
     .feedback h2 { max-width: 600px; }
-    .feedback-form { max-width: 680px; margin-top: 2rem; }
-    .feedback-question { margin-bottom: 1.8rem; }
-    .feedback-question label { display: block; font-family: sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .feedback-form { max-width: 680px; margin-top: 1.5rem; }
+    .feedback-question { margin-bottom: 1.4rem; }
+    .feedback-question label { display: block; font-family: sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; }
     .feedback-question label span { color: var(--terracotta); }
-    .feedback-question textarea { width: 100%; padding: 0.85rem 1rem; border: 1.5px solid var(--border); border-radius: 6px; font-family: sans-serif; font-size: 0.9rem; color: var(--charcoal); background: white; resize: vertical; min-height: 90px; outline: none; transition: border-color 0.2s; line-height: 1.6; }
+    .feedback-question textarea { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: 6px; font-family: sans-serif; font-size: 0.88rem; color: var(--charcoal); background: white; resize: vertical; min-height: 72px; outline: none; transition: border-color 0.2s; line-height: 1.55; }
     .feedback-question textarea:focus { border-color: var(--sage); }
-    .feedback-note { font-family: sans-serif; font-size: 0.78rem; color: var(--mid); margin-top: 0.4rem; }
-    .profile-block { background: white; border: 1.5px solid var(--border); border-radius: 8px; padding: 1.2rem 1.4rem; margin-bottom: 2rem; }
-    .profile-block .block-title { font-family: sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage); margin-bottom: 1rem; }
-    .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .feedback-note { font-family: sans-serif; font-size: 0.75rem; color: var(--mid); margin-top: 0.3rem; }
+    .profile-block { background: white; border: 1.5px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
+    .profile-block .block-title { font-family: sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage); margin-bottom: 0.8rem; }
+    .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
     .profile-grid .full { grid-column: 1 / -1; }
-    .profile-field label { display: block; font-family: sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.35rem; }
-    .profile-field select, .profile-field input[type="text"] { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: 6px; font-family: sans-serif; font-size: 0.88rem; color: var(--charcoal); background: white; outline: none; transition: border-color 0.2s; }
+    .profile-field label { display: block; font-family: sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.3rem; }
+    .profile-field select, .profile-field input[type="text"] { width: 100%; padding: 0.6rem 0.8rem; border: 1.5px solid var(--border); border-radius: 6px; font-family: sans-serif; font-size: 0.85rem; color: var(--charcoal); background: white; outline: none; transition: border-color 0.2s; }
     .profile-field select:focus, .profile-field input[type="text"]:focus { border-color: var(--sage); }
-    .radio-group { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.35rem; }
-    .radio-group label { display: flex; align-items: center; gap: 0.35rem; font-family: sans-serif; font-size: 0.82rem; font-weight: 400; color: var(--charcoal); background: var(--warm); border: 1.5px solid var(--border); border-radius: 20px; padding: 0.35rem 0.8rem; cursor: pointer; transition: all 0.2s; }
+    .radio-group { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem; }
+    .radio-group label { display: flex; align-items: center; gap: 0.3rem; font-family: sans-serif; font-size: 0.78rem; font-weight: 400; color: var(--charcoal); background: var(--warm); border: 1.5px solid var(--border); border-radius: 20px; padding: 0.3rem 0.7rem; cursor: pointer; transition: all 0.2s; }
     .radio-group input[type="radio"] { display: none; }
-    .radio-group input[type="radio"]:checked + span { font-weight: 700; }
     .radio-group label:has(input[type="radio"]:checked) { background: var(--sage); color: white; border-color: var(--sage); }
     @media (max-width: 560px) { .profile-grid { grid-template-columns: 1fr; } }
-    .feedback-success { display: none; background: var(--sage); color: white; padding: 1.2rem 1.5rem; border-radius: 8px; font-family: sans-serif; font-size: 0.95rem; margin-top: 1rem; line-height: 1.6; }
 
     /* ── SIGNUP ── */
-    .signup { background: var(--warm); border-top: 1px solid var(--border); text-align: center; }
-    .signup h2 { max-width: 600px; margin: 0 auto 0.8rem; }
-    .signup .sub { color: var(--mid); margin-bottom: 2.5rem; font-size: 1.05rem; }
+    .signup { text-align: center; flex-direction: column; }
+    .signup h2 { max-width: 600px; margin: 0 auto 0.6rem; }
+    .signup .sub { color: var(--mid); margin-bottom: 2rem; font-size: 1rem; }
     .signup-form { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; max-width: 520px; margin: 0 auto; }
-    .signup-form input[type="email"] { flex: 1; min-width: 220px; padding: 0.85rem 1.2rem; border: 1.5px solid var(--border); border-radius: 5px; font-size: 1rem; font-family: sans-serif; background: white; color: var(--charcoal); outline: none; transition: border-color 0.2s; }
+    .signup-form input[type="email"] { flex: 1; min-width: 200px; padding: 0.8rem 1.1rem; border: 1.5px solid var(--border); border-radius: 5px; font-size: 0.95rem; font-family: sans-serif; background: white; color: var(--charcoal); outline: none; transition: border-color 0.2s; }
     .signup-form input[type="email"]:focus { border-color: var(--sage); }
-    .signup-form select { padding: 0.85rem 1.2rem; border: 1.5px solid var(--border); border-radius: 5px; font-size: 0.9rem; font-family: sans-serif; background: white; color: var(--charcoal); cursor: pointer; outline: none; }
-    .signup-form .btn-primary { white-space: nowrap; }
-    .form-note { font-family: sans-serif; font-size: 0.8rem; color: var(--mid); margin-top: 1rem; }
+    .signup-form select { padding: 0.8rem 1.1rem; border: 1.5px solid var(--border); border-radius: 5px; font-size: 0.88rem; font-family: sans-serif; background: white; color: var(--charcoal); cursor: pointer; outline: none; }
+    .form-note { font-family: sans-serif; font-size: 0.78rem; color: var(--mid); margin-top: 0.8rem; }
     .success-msg { display: none; background: var(--sage); color: white; padding: 1rem 2rem; border-radius: 5px; font-family: sans-serif; margin-top: 1rem; }
 
     /* ── FOOTER ── */
-    footer { background: var(--charcoal); color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-family: sans-serif; font-size: 0.8rem; }
+    footer { background: var(--charcoal); color: rgba(255,255,255,0.5); text-align: center; padding: 1.5rem; font-family: sans-serif; font-size: 0.78rem; }
     footer span { color: rgba(255,255,255,0.8); }
 
-    @media (max-width: 640px) {
-      .stats { gap: 2rem; }
-      nav { padding: 0.8rem 1rem; }
-      .phone-outer { width: 240px; }
-      .phone-inner { height: 480px; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .problem-grid, .solution-grid, .users-grid, .quotes-grid, .tam-grid, .market-breakdown { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 1rem; }
+    }
+    @media (max-width: 560px) {
+      .problem-grid, .solution-grid, .users-grid, .quotes-grid, .tam-grid, .market-breakdown { grid-template-columns: 1fr; }
+      .phone-outer { width: 200px; }
+      .phone-inner { height: 400px; }
+      section { min-height: auto; scroll-snap-align: none; }
     }
   </style>
 </head>
@@ -367,63 +360,75 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero-section">
   <div class="eyebrow">Early Stage · Seattle, WA · Seeking Feedback</div>
   <h1>The village that used to raise your kids<br><span>doesn't exist anymore. Let's rebuild it.</span></h1>
-  <p class="subtitle">
-    My Village connects families, seniors, and neighbors — to share childcare, reduce costs, and rebuild the intergenerational bonds we've lost.
-  </p>
+  <p class="subtitle">My Village connects families, seniors, and neighbors — to share childcare, reduce costs, and rebuild the intergenerational bonds we've lost.</p>
   <div class="hero-cta">
     <a class="btn-primary" href="#signup">Get Early Access</a>
     <a class="btn-secondary" href="#preview">See the App</a>
   </div>
+  <div class="stats-strip fade-in">
+    <div class="stat-item">
+      <span class="number">~$3,500</span>
+      <span class="label">avg. monthly childcare cost for 2 kids in Seattle</span>
+      <span class="source">Child Care Aware of America, 2024</span>
+    </div>
+    <div class="stat-item">
+      <span class="number">1 in 3</span>
+      <span class="label">seniors report feeling regularly lonely</span>
+      <span class="source">U. of Michigan / AARP, 2024</span>
+    </div>
+    <div class="stat-item">
+      <span class="number">50M+</span>
+      <span class="label">foreign-born residents in the US</span>
+      <span class="source">U.S. Census Bureau, 2024</span>
+    </div>
+  </div>
 </section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat-item">
-    <span class="number">~$3,500</span>
-    <span class="label">avg. monthly childcare cost for 2 kids in Seattle</span>
-    <span class="source">Child Care Aware of America, 2024</span>
-  </div>
-  <div class="stat-item">
-    <span class="number">1 in 3</span>
-    <span class="label">seniors report feeling regularly lonely</span>
-    <span class="source">U. of Michigan / AARP National Poll on Healthy Aging, 2024</span>
-  </div>
-  <div class="stat-item">
-    <span class="number">50M+</span>
-    <span class="label">foreign-born residents in the US</span>
-    <span class="source">U.S. Census Bureau, American Community Survey, 2024</span>
-  </div>
-</div>
 
 <!-- PROBLEM -->
 <section class="problem" id="problem">
   <div class="container fade-in">
     <div class="section-label">The Problem</div>
     <h2>Modern life broke the village.</h2>
-    <p class="lead">Three separate crises — unaffordable childcare, senior isolation, and fragmented neighborhoods — are actually one problem: we lost the village. And no app has tried to rebuild it.</p>
+    <p class="lead">Three separate crises — unaffordable childcare, senior isolation, and fragmented neighborhoods — are actually one problem: we lost the village.</p>
     <div class="problem-grid">
       <div class="problem-card">
-        <div class="icon">💸</div>
-        <h3>Childcare is unaffordable</h3>
-        <p>$30–$50/hr for a babysitter. Over $3,500/month for two kids in daycare in Seattle. Families are stretched to the breaking point — and many are dropping out of the workforce.</p>
+        <div class="problem-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div>
+          <h3>Childcare is unaffordable</h3>
+          <p>$30–$50/hr for a babysitter. Over $3,500/month for two kids in daycare. Families are stretched to the breaking point.</p>
+        </div>
       </div>
       <div class="problem-card">
-        <div class="icon">🧓</div>
-        <h3>Seniors are isolated</h3>
-        <p>Friends pass away. Children move cities. Seniors have time, wisdom, and love to give — but no infrastructure to share it. Loneliness is now a public health crisis.</p>
+        <div class="problem-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div>
+          <h3>Seniors are isolated</h3>
+          <p>Friends pass away. Children move cities. Seniors have time, wisdom, and love to give — but no infrastructure to share it.</p>
+        </div>
       </div>
       <div class="problem-card">
-        <div class="icon">🌍</div>
-        <h3>Immigrants raise kids alone</h3>
-        <p>Grandparents are on another continent. No aunts, no cousins, no family safety net. Communities that should form naturally — don't.</p>
+        <div class="problem-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div>
+          <h3>Immigrants raise kids alone</h3>
+          <p>Grandparents are on another continent. No aunts, no cousins, no family safety net. The village that should form naturally — doesn't.</p>
+        </div>
       </div>
       <div class="problem-card">
-        <div class="icon">🏘️</div>
-        <h3>Neighbors are strangers</h3>
-        <p>We live next door to each other for years without knowing each other's names. Real community doesn't happen by accident anymore — it needs a platform.</p>
+        <div class="problem-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <h3>Neighbors are strangers</h3>
+          <p>We live next door for years without knowing each other's names. Real community doesn't happen by accident anymore.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -445,12 +450,12 @@
 <section class="solution" id="solution">
   <div class="container fade-in">
     <div class="section-label">The Solution</div>
-    <h2>My Village: a community platform built on who you are, not what you do.</h2>
-    <p class="lead">Instead of a work resume, your profile reflects your passions, origins, availability, and what you can offer. The app finds genuine matches nearby and helps you build real relationships — not transactions.</p>
+    <h2>Built on who you are, not what you do.</h2>
+    <p class="lead">Your profile reflects your passions, origins, availability, and what you can offer. The app finds genuine matches nearby — not transactions, but real relationships.</p>
     <div class="solution-grid">
       <div class="solution-card">
         <h3>Discover Neighbors</h3>
-        <p>Browse nearby families, seniors, and individuals by type. Get a "neighbor who'd love to meet you" suggestion every day.</p>
+        <p>Browse nearby families, seniors, and individuals. Get a "neighbor who'd love to meet you" suggestion every day.</p>
       </div>
       <div class="solution-card">
         <h3>Village Events</h3>
@@ -462,7 +467,7 @@
       </div>
       <div class="solution-card">
         <h3>Village Score</h3>
-        <p>Track your connections, offers made, and Village Score. A reputation system built on generosity, not followers.</p>
+        <p>Track your connections and offers made. A reputation system built on generosity, not followers.</p>
       </div>
     </div>
   </div>
@@ -483,12 +488,12 @@
       <div class="step">
         <div class="step-num">2</div>
         <h3>Get matched locally</h3>
-        <p>We connect you with compatible people nearby — a senior who loves kids, a neighbor who speaks your language, a family that needs what you offer.</p>
+        <p>We connect you with compatible people nearby — a senior who loves kids, a neighbor who speaks your language.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <h3>Build your village</h3>
-        <p>A first meeting, a shared meal, an afternoon with the kids. Real relationships — not transactions. Your village grows over time.</p>
+        <p>A first meeting, a shared meal, an afternoon with the kids. Real relationships that grow over time.</p>
       </div>
     </div>
   </div>
@@ -500,223 +505,87 @@
     <div class="section-label">The Product</div>
     <h2>Already built. Already real.</h2>
     <p class="lead">A first look at the My Village app — designed to feel warm, personal, and easy for everyone regardless of age.</p>
-
     <div class="screens-row">
 
       <!-- SCREEN 1: DISCOVER -->
       <div class="screen-wrap">
-        <div class="phone-outer">
-          <div class="phone-inner">
-            <div class="mock-scroll">
-              <div class="mock-header">
-                <div class="mock-title">Your Village</div>
-              </div>
-              <div class="mock-chips">
-                <span class="mock-chip on">Seattle</span>
-                <span class="mock-chip off">New York</span>
-              </div>
-              <div class="mock-filters">
-                <span class="mock-pill on">All neighbors</span>
-                <span class="mock-pill off">👨‍👩‍👧 Family</span>
-                <span class="mock-pill off">🧓 Senior</span>
-                <span class="mock-pill off">😊 Individual</span>
-              </div>
-              <div class="mock-featured">
-                <div class="mock-featured-label">♡ A neighbor who'd love to meet you</div>
-                <div class="mock-featured-name">Elena wants to share Sunday dinners</div>
-                <div class="mock-featured-desc">She lives nearby and dreams of a big family table. She speaks Italian &amp; English and loves cooking pasta from scratch.</div>
-              </div>
-              <div class="mock-section-title">3 neighbors in your village</div>
-              <div class="mock-neighbor">
-                <div class="mock-avatar">👤</div>
-                <div>
-                  <div class="mock-neighbor-name">Chetnnya Jain</div>
-                  <span class="mock-tag">😊 Individual</span>
-                </div>
-              </div>
-              <div class="mock-neighbor">
-                <div class="mock-avatar">🧓</div>
-                <div>
-                  <div class="mock-neighbor-name">Roberto Morales</div>
-                  <span class="mock-tag green">🧓 Senior</span>
-                  <div class="mock-bio">Retired carpenter. Happy to help neighbors with small repairs.</div>
-                </div>
-              </div>
-              <div class="mock-neighbor">
-                <div class="mock-avatar">👨‍👩‍👧</div>
-                <div>
-                  <div class="mock-neighbor-name">The Kim Family</div>
-                  <span class="mock-tag">👨‍👩‍👧 Family</span>
-                </div>
-              </div>
+        <div class="phone-outer"><div class="phone-inner">
+          <div class="mock-scroll">
+            <div class="mock-header"><div class="mock-title">Your Village</div></div>
+            <div class="mock-chips"><span class="mock-chip on">Seattle</span><span class="mock-chip off">New York</span></div>
+            <div class="mock-filters">
+              <span class="mock-pill on">All neighbors</span>
+              <span class="mock-pill off">Family</span>
+              <span class="mock-pill off">Senior</span>
             </div>
-            <div class="mock-nav">
-              <div class="mock-nav-item on">
-                <div class="mock-nav-bar"></div>
-                <span class="mock-nav-icon">◎</span>
-                <span class="mock-nav-label">Discover</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">📅</span>
-                <span class="mock-nav-label">Events</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">↗</span>
-                <span class="mock-nav-label">Share</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">💬</span>
-                <span class="mock-nav-label">Chat</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">👤</span>
-                <span class="mock-nav-label">Profile</span>
-              </div>
+            <div class="mock-featured">
+              <div class="mock-featured-label">A neighbor who'd love to meet you</div>
+              <div class="mock-featured-name">Elena wants to share Sunday dinners</div>
+              <div class="mock-featured-desc">She lives nearby and speaks Italian & English. Loves cooking pasta from scratch.</div>
             </div>
+            <div class="mock-section-title">3 neighbors nearby</div>
+            <div class="mock-neighbor"><div class="mock-avatar">CJ</div><div><div class="mock-neighbor-name">Chetnnya Jain</div><span class="mock-tag">Individual</span></div></div>
+            <div class="mock-neighbor"><div class="mock-avatar">RM</div><div><div class="mock-neighbor-name">Roberto Morales</div><span class="mock-tag green">Senior</span><div class="mock-bio">Retired carpenter. Happy to help with small repairs.</div></div></div>
+            <div class="mock-neighbor"><div class="mock-avatar">KF</div><div><div class="mock-neighbor-name">The Kim Family</div><span class="mock-tag">Family</span></div></div>
           </div>
-        </div>
+          <div class="mock-nav">
+            <div class="mock-nav-item on"><div class="mock-nav-bar"></div><span class="mock-nav-icon">◎</span><span class="mock-nav-label">Discover</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">📅</span><span class="mock-nav-label">Events</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">↗</span><span class="mock-nav-label">Share</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">💬</span><span class="mock-nav-label">Chat</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">👤</span><span class="mock-nav-label">Profile</span></div>
+          </div>
+        </div></div>
         <div class="screen-caption">Discover Neighbors</div>
       </div>
 
       <!-- SCREEN 2: CHAT -->
       <div class="screen-wrap">
-        <div class="phone-outer">
-          <div class="phone-inner">
-            <div class="mock-scroll">
-              <div class="mock-header">
-                <div class="mock-title">Messages</div>
-              </div>
-              <div style="height:10px;"></div>
-              <div class="mock-chat-row">
-                <div class="mock-chat-avatar">👵</div>
-                <div class="mock-chat-info">
-                  <div class="mock-chat-name">Elena Rossi</div>
-                  <div class="mock-chat-preview">I would love to cook together this weekend!</div>
-                </div>
-                <div class="mock-chat-meta">
-                  <span class="mock-chat-time">2m ago</span>
-                  <span class="mock-badge">2</span>
-                </div>
-              </div>
-              <div class="mock-chat-row">
-                <div class="mock-chat-avatar">🧓</div>
-                <div class="mock-chat-info">
-                  <div class="mock-chat-name">Roberto Morales</div>
-                  <div class="mock-chat-preview">I can fix that shelf for you, no problem!</div>
-                </div>
-                <div class="mock-chat-meta">
-                  <span class="mock-chat-time">1h ago</span>
-                </div>
-              </div>
-              <div class="mock-chat-row">
-                <div class="mock-chat-avatar">👨‍👩‍👧</div>
-                <div class="mock-chat-info">
-                  <div class="mock-chat-name">James &amp; David</div>
-                  <div class="mock-chat-preview">Movie night Friday? We have popcorn! 🍿</div>
-                </div>
-                <div class="mock-chat-meta">
-                  <span class="mock-chat-time">3h ago</span>
-                  <span class="mock-badge">1</span>
-                </div>
-              </div>
-              <div class="mock-chat-row">
-                <div class="mock-chat-avatar">👨‍👩‍👧</div>
-                <div class="mock-chat-info">
-                  <div class="mock-chat-name">The Kim Family</div>
-                  <div class="mock-chat-preview">Korean BBQ this Saturday at our place!</div>
-                </div>
-                <div class="mock-chat-meta">
-                  <span class="mock-chat-time">Yesterday</span>
-                </div>
-              </div>
-            </div>
-            <div class="mock-nav">
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">◎</span>
-                <span class="mock-nav-label">Discover</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">📅</span>
-                <span class="mock-nav-label">Events</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">↗</span>
-                <span class="mock-nav-label">Share</span>
-              </div>
-              <div class="mock-nav-item on">
-                <div class="mock-nav-bar"></div>
-                <span class="mock-nav-icon">💬</span>
-                <span class="mock-nav-label">Chat</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">👤</span>
-                <span class="mock-nav-label">Profile</span>
-              </div>
-            </div>
+        <div class="phone-outer"><div class="phone-inner">
+          <div class="mock-scroll">
+            <div class="mock-header"><div class="mock-title">Messages</div></div>
+            <div style="height:8px;"></div>
+            <div class="mock-chat-row"><div class="mock-chat-avatar">ER</div><div class="mock-chat-info"><div class="mock-chat-name">Elena Rossi</div><div class="mock-chat-preview">I would love to cook together this weekend!</div></div><div class="mock-chat-meta"><span class="mock-chat-time">2m ago</span><span class="mock-badge">2</span></div></div>
+            <div class="mock-chat-row"><div class="mock-chat-avatar">RM</div><div class="mock-chat-info"><div class="mock-chat-name">Roberto Morales</div><div class="mock-chat-preview">I can fix that shelf for you, no problem!</div></div><div class="mock-chat-meta"><span class="mock-chat-time">1h ago</span></div></div>
+            <div class="mock-chat-row"><div class="mock-chat-avatar">JD</div><div class="mock-chat-info"><div class="mock-chat-name">James & David</div><div class="mock-chat-preview">Movie night Friday? We have popcorn!</div></div><div class="mock-chat-meta"><span class="mock-chat-time">3h ago</span><span class="mock-badge">1</span></div></div>
+            <div class="mock-chat-row"><div class="mock-chat-avatar">KF</div><div class="mock-chat-info"><div class="mock-chat-name">The Kim Family</div><div class="mock-chat-preview">Korean BBQ this Saturday at our place!</div></div><div class="mock-chat-meta"><span class="mock-chat-time">Yesterday</span></div></div>
           </div>
-        </div>
+          <div class="mock-nav">
+            <div class="mock-nav-item"><span class="mock-nav-icon">◎</span><span class="mock-nav-label">Discover</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">📅</span><span class="mock-nav-label">Events</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">↗</span><span class="mock-nav-label">Share</span></div>
+            <div class="mock-nav-item on"><div class="mock-nav-bar"></div><span class="mock-nav-icon">💬</span><span class="mock-nav-label">Chat</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">👤</span><span class="mock-nav-label">Profile</span></div>
+          </div>
+        </div></div>
         <div class="screen-caption">Stay Connected</div>
       </div>
 
       <!-- SCREEN 3: PROFILE -->
       <div class="screen-wrap">
-        <div class="phone-outer">
-          <div class="phone-inner">
-            <div class="mock-scroll">
-              <div class="mock-header">
-                <div class="mock-title">My Profile</div>
-              </div>
-              <div class="mock-profile-top">
-                <div class="mock-profile-avatar">🙋‍♀️</div>
-                <div class="mock-profile-name">Ilaria</div>
-              </div>
-              <div class="mock-profile-bio">
-                Hi neighbors! I moved to Seattle from Rome 6 months ago and I'm still building my little community here. I played volleyball for 10+ years and I'm dreaming of a casual group — people who love the game and being outside.
-              </div>
-              <div class="mock-profile-tag">👨‍👩‍👧 Family</div>
-              <div class="mock-stats-row">
-                <div class="mock-stat-box">
-                  <span class="mock-stat-icon">👥</span>
-                  <span class="mock-stat-num pink">12</span>
-                  <span class="mock-stat-label">Connections</span>
-                </div>
-                <div class="mock-stat-box">
-                  <span class="mock-stat-icon">♡</span>
-                  <span class="mock-stat-num pink">8</span>
-                  <span class="mock-stat-label">Offers Made</span>
-                </div>
-                <div class="mock-stat-box">
-                  <span class="mock-stat-icon">🌿</span>
-                  <span class="mock-stat-num green">4.9</span>
-                  <span class="mock-stat-label">Village Score</span>
-                </div>
-              </div>
+        <div class="phone-outer"><div class="phone-inner">
+          <div class="mock-scroll">
+            <div class="mock-header"><div class="mock-title">My Profile</div></div>
+            <div class="mock-profile-top">
+              <div class="mock-profile-avatar" style="font-family:sans-serif;font-size:1.2rem;font-weight:800;color:white;">IR</div>
+              <div class="mock-profile-name">Ilaria</div>
             </div>
-            <div class="mock-nav">
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">◎</span>
-                <span class="mock-nav-label">Discover</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">📅</span>
-                <span class="mock-nav-label">Events</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">↗</span>
-                <span class="mock-nav-label">Share</span>
-              </div>
-              <div class="mock-nav-item">
-                <span class="mock-nav-icon">💬</span>
-                <span class="mock-nav-label">Chat</span>
-              </div>
-              <div class="mock-nav-item on">
-                <div class="mock-nav-bar"></div>
-                <span class="mock-nav-icon">👤</span>
-                <span class="mock-nav-label">Profile</span>
-              </div>
+            <div class="mock-profile-bio">Hi neighbors! I moved to Seattle from Rome 6 months ago. I played volleyball for 10+ years and I'm dreaming of a casual neighborhood group.</div>
+            <div class="mock-profile-tag">Family</div>
+            <div class="mock-stats-row">
+              <div class="mock-stat-box"><span class="mock-stat-icon">👥</span><span class="mock-stat-num pink">12</span><span class="mock-stat-label">Connections</span></div>
+              <div class="mock-stat-box"><span class="mock-stat-icon">♡</span><span class="mock-stat-num pink">8</span><span class="mock-stat-label">Offers Made</span></div>
+              <div class="mock-stat-box"><span class="mock-stat-icon">🌿</span><span class="mock-stat-num green">4.9</span><span class="mock-stat-label">Village Score</span></div>
             </div>
           </div>
-        </div>
+          <div class="mock-nav">
+            <div class="mock-nav-item"><span class="mock-nav-icon">◎</span><span class="mock-nav-label">Discover</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">📅</span><span class="mock-nav-label">Events</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">↗</span><span class="mock-nav-label">Share</span></div>
+            <div class="mock-nav-item"><span class="mock-nav-icon">💬</span><span class="mock-nav-label">Chat</span></div>
+            <div class="mock-nav-item on"><div class="mock-nav-bar"></div><span class="mock-nav-icon">👤</span><span class="mock-nav-label">Profile</span></div>
+          </div>
+        </div></div>
         <div class="screen-caption">Your Village Profile</div>
       </div>
 
@@ -758,22 +627,30 @@
     <p class="lead">My Village brings together people who have complementary needs and turns them into a real community.</p>
     <div class="users-grid">
       <div class="user-card">
-        <span class="user-emoji">👨‍👩‍👧</span>
+        <div class="user-icon" style="background:#FDE8ED;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--app-pink)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
         <h3>Families</h3>
         <p>Parents who need childcare support, playdates, and community — without paying a fortune for strangers.</p>
       </div>
       <div class="user-card">
-        <span class="user-emoji">🧓</span>
+        <div class="user-icon" style="background:#E8F0E8;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/><path d="M12 12v4"/><path d="M9 19l3 3 3-3"/></svg>
+        </div>
         <h3>Seniors</h3>
         <p>Retirees with time, warmth, and skills to share — looking for purpose and genuine human connection.</p>
       </div>
       <div class="user-card">
-        <span class="user-emoji">😊</span>
+        <div class="user-icon" style="background:#EEF2F0;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
         <h3>Individuals</h3>
         <p>People new to a city, navigating a life transition, or simply wanting to put down roots in their neighborhood.</p>
       </div>
       <div class="user-card">
-        <span class="user-emoji">🤝</span>
+        <div class="user-icon" style="background:#FEF0E6;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
         <h3>Caregivers</h3>
         <p>People who offer help — cooking, language exchange, babysitting, errands — and want to be part of a trusted network.</p>
       </div>
@@ -781,106 +658,117 @@
   </div>
 </section>
 
-<!-- PERSONAS -->
+<!-- PERSONAS — Capitol Hill -->
 <section class="personas" id="people">
   <div class="container fade-in">
-    <div class="section-label">Real People, Real Connections</div>
+    <div class="section-label">Real People, Real Connections · 1 of 3</div>
     <h2>Meet the village.</h2>
-    <p class="lead">These are the people who inspired this idea — built from real conversations. Different lives, different needs, but close enough to genuinely help each other.</p>
-
-    <!-- CAPITOL HILL -->
-    <div class="neighborhood-group">
-      <div class="neighborhood-label">📍 Capitol Hill, Seattle</div>
-      <div class="village-pair-cards">
-        <div class="persona-card">
-          <div class="persona-avatar sage">♟️</div>
-          <div class="persona-name">George Alderman</div>
-          <div class="persona-meta">72 · Retired Professor · Senior</div>
-          <div class="persona-bio">Spent 40 years teaching history at UW. Now lives alone in a sunny apartment on 15th Ave. Afternoons are wide open. Loves chess, Italian cooking, and slow mornings with the newspaper.</div>
-          <div class="persona-tags">
-            <span class="persona-tag tag-offers">Offers: afternoon time</span>
-            <span class="persona-tag tag-offers">Offers: chess lessons</span>
-            <span class="persona-tag tag-needs">Needs: purpose</span>
-            <span class="persona-tag tag-needs">Needs: companionship</span>
-          </div>
-        </div>
-        <div class="persona-card">
-          <div class="persona-avatar terra">👩‍👧‍👦</div>
-          <div class="persona-name">Valeria Torres</div>
-          <div class="persona-meta">36 · UX Designer · Family</div>
-          <div class="persona-bio">Single mom of Leo (8) and Sofia (2). Works remotely and loves her job — but 3–6pm is chaos. Leo needs someone after school. Sofia needs attention while Valeria finishes her last meetings of the day.</div>
-          <div class="persona-tags">
-            <span class="persona-tag tag-offers">Offers: home-cooked meals</span>
-            <span class="persona-tag tag-offers">Offers: warm community spirit</span>
-            <span class="persona-tag tag-needs">Needs: afternoon childcare help</span>
-            <span class="persona-tag tag-needs">Needs: activities for Leo</span>
-          </div>
+    <p class="lead">Built from real conversations — different lives, different needs, same neighborhood.</p>
+    <div class="neighborhood-label">📍 Capitol Hill, Seattle</div>
+    <div class="village-pair-cards">
+      <div class="persona-card">
+        <div class="persona-avatar sage">GA</div>
+        <div class="persona-name">George Alderman</div>
+        <div class="persona-meta">72 · Retired Professor · Senior</div>
+        <div class="persona-bio">40 years teaching history at UW. Lives alone on 15th Ave. Afternoons wide open. Loves chess, Italian cooking, and slow mornings with the newspaper.</div>
+        <div class="persona-tags">
+          <span class="persona-tag tag-offers">Offers: afternoon time</span>
+          <span class="persona-tag tag-offers">Offers: chess lessons</span>
+          <span class="persona-tag tag-needs">Needs: purpose</span>
+          <span class="persona-tag tag-needs">Needs: companionship</span>
         </div>
       </div>
-      <div class="village-match">
-        <div class="village-match-icon">✨</div>
-        <div><strong>My Village match:</strong> George picks up Leo from school on Tuesdays and Thursdays. Leo is learning chess — and loves it. George stays for dinner most weeks. Valeria's Sunday pasta has become a Capitol Hill tradition for both of them.</div>
+      <div class="persona-card">
+        <div class="persona-avatar terra">VT</div>
+        <div class="persona-name">Valeria Torres</div>
+        <div class="persona-meta">36 · UX Designer · Family</div>
+        <div class="persona-bio">Single mom of Leo (8) and Sofia (2). Works remotely — but 3–6pm is chaos. Leo needs someone after school while Valeria finishes her last meetings.</div>
+        <div class="persona-tags">
+          <span class="persona-tag tag-offers">Offers: home-cooked meals</span>
+          <span class="persona-tag tag-offers">Offers: community spirit</span>
+          <span class="persona-tag tag-needs">Needs: afternoon childcare</span>
+          <span class="persona-tag tag-needs">Needs: activities for Leo</span>
+        </div>
       </div>
     </div>
+    <div class="village-match">
+      <div class="village-match-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div><strong>My Village match:</strong> George picks up Leo from school on Tuesdays and Thursdays. Leo is learning chess — and loves it. Valeria's Sunday pasta has become a Capitol Hill tradition for both of them.</div>
+    </div>
+  </div>
+</section>
 
-    <!-- SOUTH LAKE UNION -->
-    <div class="neighborhood-group">
-      <div class="neighborhood-label">📍 South Lake Union, Seattle</div>
-      <div class="village-pair-cards">
-        <div class="persona-card">
-          <div class="persona-avatar">🚴‍♀️</div>
-          <div class="persona-name">Maya Chen</div>
-          <div class="persona-meta">29 · Software Engineer · Individual</div>
-          <div class="persona-bio">Moved from Chicago 4 months ago for a tech job. Loves biking the Burke-Gilman trail, painting, and gardening — but has no garden, no friends yet, and an apartment that feels too quiet on weekends.</div>
-          <div class="persona-tags">
-            <span class="persona-tag tag-offers">Offers: AI &amp; tech skills</span>
-            <span class="persona-tag tag-offers">Offers: biking buddy</span>
-            <span class="persona-tag tag-needs">Needs: community &amp; friends</span>
-            <span class="persona-tag tag-needs">Needs: garden to tend</span>
-          </div>
-        </div>
-        <div class="persona-card">
-          <div class="persona-avatar sage">🎨</div>
-          <div class="persona-name">Karon Williams</div>
-          <div class="persona-meta">65 · Retired Art Teacher · Senior</div>
-          <div class="persona-bio">Taught art for 30 years. Still paints watercolors every morning. Has a small garden, a studio full of supplies, and a sharp mind that wants to keep learning — especially how AI can enhance her creative work.</div>
-          <div class="persona-tags">
-            <span class="persona-tag tag-offers">Offers: painting &amp; art lessons</span>
-            <span class="persona-tag tag-offers">Offers: garden space</span>
-            <span class="persona-tag tag-needs">Needs: help with AI tools</span>
-            <span class="persona-tag tag-needs">Needs: younger company</span>
-          </div>
+<!-- PERSONAS — South Lake Union -->
+<section class="personas">
+  <div class="container fade-in">
+    <div class="section-label">Real People, Real Connections · 2 of 3</div>
+    <h2>Skills exchange across generations.</h2>
+    <p class="lead">A young engineer who just moved to Seattle meets a retired art teacher with a garden and a studio.</p>
+    <div class="neighborhood-label">📍 South Lake Union, Seattle</div>
+    <div class="village-pair-cards">
+      <div class="persona-card">
+        <div class="persona-avatar pink">MC</div>
+        <div class="persona-name">Maya Chen</div>
+        <div class="persona-meta">29 · Software Engineer · Individual</div>
+        <div class="persona-bio">Moved from Chicago 4 months ago. Loves biking, painting, and gardening — but has no garden, no friends yet, and weekends that feel too quiet.</div>
+        <div class="persona-tags">
+          <span class="persona-tag tag-offers">Offers: AI & tech skills</span>
+          <span class="persona-tag tag-offers">Offers: biking buddy</span>
+          <span class="persona-tag tag-needs">Needs: community & friends</span>
+          <span class="persona-tag tag-needs">Needs: garden to tend</span>
         </div>
       </div>
-      <div class="village-match">
-        <div class="village-match-icon">✨</div>
-        <div><strong>My Village match:</strong> Karon and Maya meet every Saturday morning. Karon teaches watercolor painting in her studio; Maya shows Karon how to use AI tools for her artwork. Maya now tends a corner of Karon's garden — and has her first tomatoes coming in.</div>
+      <div class="persona-card">
+        <div class="persona-avatar sage">KW</div>
+        <div class="persona-name">Karon Williams</div>
+        <div class="persona-meta">65 · Retired Art Teacher · Senior</div>
+        <div class="persona-bio">Taught art for 30 years. Paints watercolors every morning. Has a small garden, a studio full of supplies, and wants to learn how AI can enhance her creative work.</div>
+        <div class="persona-tags">
+          <span class="persona-tag tag-offers">Offers: painting & art lessons</span>
+          <span class="persona-tag tag-offers">Offers: garden space</span>
+          <span class="persona-tag tag-needs">Needs: help with AI tools</span>
+          <span class="persona-tag tag-needs">Needs: younger company</span>
+        </div>
       </div>
     </div>
+    <div class="village-match">
+      <div class="village-match-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div><strong>My Village match:</strong> Karon teaches watercolor in her studio; Maya shows Karon how to use AI for her artwork. Maya now tends a corner of Karon's garden — and has her first tomatoes coming in.</div>
+    </div>
+  </div>
+</section>
 
-    <!-- KIRKLAND -->
-    <div class="neighborhood-group">
-      <div class="neighborhood-label">📍 Totem Lake, Kirkland</div>
-      <div class="village-pair-cards">
-        <div class="persona-card solo">
-          <div class="persona-avatar">💻</div>
-          <div class="persona-name">Arjun Sharma</div>
-          <div class="persona-meta">33 · Software Engineer at Microsoft · Individual</div>
-          <div class="persona-bio">Originally from Bangalore, now based in Kirkland. Every year he spends 2–3 months in India visiting family. The house sits empty, the plants die, and the mail piles up. He doesn't need a house-sitter agency — he needs neighbors he can actually trust.</div>
-          <div class="persona-tags">
-            <span class="persona-tag tag-offers">Offers: tech help</span>
-            <span class="persona-tag tag-offers">Offers: Indian cooking &amp; cultural exchange</span>
-            <span class="persona-tag tag-needs">Needs: trusted house watch</span>
-            <span class="persona-tag tag-needs">Needs: real neighborhood connection</span>
-          </div>
+<!-- PERSONAS — Kirkland -->
+<section class="personas">
+  <div class="container fade-in">
+    <div class="section-label">Real People, Real Connections · 3 of 3</div>
+    <h2>Trust your neighbors while you're away.</h2>
+    <p class="lead">A software engineer who travels for months needs a real neighborhood, not a house-sitter agency.</p>
+    <div class="neighborhood-label">📍 Totem Lake, Kirkland</div>
+    <div class="village-pair-cards">
+      <div class="persona-card solo">
+        <div class="persona-avatar charcoal">AS</div>
+        <div class="persona-name">Arjun Sharma</div>
+        <div class="persona-meta">33 · Software Engineer at Microsoft · Individual</div>
+        <div class="persona-bio">Originally from Bangalore, now based in Kirkland. Every year he spends 2–3 months in India visiting family. The house sits empty, the plants die, and the mail piles up. He doesn't need an agency — he needs neighbors he can trust.</div>
+        <div class="persona-tags">
+          <span class="persona-tag tag-offers">Offers: tech help</span>
+          <span class="persona-tag tag-offers">Offers: Indian cooking & cultural exchange</span>
+          <span class="persona-tag tag-needs">Needs: trusted house watch</span>
+          <span class="persona-tag tag-needs">Needs: real neighborhood connection</span>
         </div>
       </div>
-      <div class="village-match">
-        <div class="village-match-icon">🔍</div>
-        <div><strong>Finding Arjun's village:</strong> My Village is connecting Arjun with neighbors on his Kirkland block — people who check in, water his plants, and collect his mail while he's away. In return, Arjun hosts a Diwali dinner for the whole street every November when he comes back.</div>
-      </div>
     </div>
-
+    <div class="village-match">
+      <div class="village-match-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div><strong>Finding Arjun's village:</strong> My Village connects Arjun with neighbors on his block — people who check in, water his plants, collect his mail. In return, Arjun hosts a Diwali dinner for the whole street every November.</div>
+    </div>
   </div>
 </section>
 
@@ -889,43 +777,57 @@
   <div class="container fade-in">
     <div class="section-label">Market Opportunity</div>
     <h2>A large problem. A clear market.</h2>
-    <p class="lead">My Village sits at the intersection of three growing markets in North America — childcare, senior care, and community platforms. We're starting in Seattle and building toward scale.</p>
+    <p class="lead">My Village sits at the intersection of three growing North American markets. Starting in Seattle, building toward scale.</p>
     <div class="tam-grid">
       <div class="tam-card">
         <div class="tam-label tam">TAM — Total Addressable Market</div>
         <div class="tam-number">$190B</div>
-        <div class="tam-desc">Total North American childcare + senior home &amp; companion care market</div>
+        <div class="tam-desc">North American childcare + senior home & companion care</div>
         <div class="tam-source">IBISWorld 2023; Grand View Research 2024</div>
       </div>
       <div class="tam-card">
         <div class="tam-label sam">SAM — Serviceable Addressable Market</div>
         <div class="tam-number">$18B</div>
-        <div class="tam-desc">Tech-enabled peer-to-peer community care platforms in urban North America</div>
-        <div class="tam-source">Est. ~9% of TAM based on urban digital adoption in target demographics</div>
+        <div class="tam-desc">Tech-enabled peer-to-peer community care in urban North America</div>
+        <div class="tam-source">Est. ~9% of TAM, urban digital adoption in target demographics</div>
       </div>
       <div class="tam-card">
         <div class="tam-label som">SOM — Serviceable Obtainable Market</div>
         <div class="tam-number">$45M</div>
-        <div class="tam-desc">Seattle metro area: ~180,000 target households × $250/year avg. platform value</div>
-        <div class="tam-source">King County Census data 2024; internal estimate</div>
+        <div class="tam-desc">Seattle metro: ~180,000 target households × $250/yr platform value</div>
+        <div class="tam-source">King County Census 2024; internal estimate</div>
       </div>
     </div>
-    <p class="lead" style="margin-bottom: 1.5rem; font-size: 0.95rem;">The three markets we operate in:</p>
     <div class="market-breakdown">
       <div class="market-segment">
-        <h4>👶 Childcare (North America)</h4>
-        <p><span class="seg-num">$60B</span> market growing at 3.3% CAGR. 1 in 3 families struggle to afford formal care. Informal and cooperative childcare is an underserved segment.</p>
-        <p style="margin-top: 0.4rem; font-size: 0.72rem; font-style: italic; color: var(--mid);">IBISWorld, 2023</p>
+        <h4>
+          <span class="seg-icon green">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </span>
+          Childcare
+        </h4>
+        <p><span class="seg-num">$60B</span> growing at 3.3% CAGR. 1 in 3 families struggle to afford formal care. Cooperative childcare is underserved.</p>
+        <p style="margin-top:0.3rem;font-size:0.68rem;font-style:italic;color:var(--mid);">IBISWorld, 2023</p>
       </div>
       <div class="market-segment">
-        <h4>🧓 Senior Home &amp; Companion Care</h4>
-        <p><span class="seg-num">$130B</span> market in North America. Senior companion and social services are the fastest-growing sub-segment as the 65+ population expands.</p>
-        <p style="margin-top: 0.4rem; font-size: 0.72rem; font-style: italic; color: var(--mid);">Grand View Research, 2024</p>
+        <h4>
+          <span class="seg-icon terra">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--app-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </span>
+          Senior Care
+        </h4>
+        <p><span class="seg-num">$130B</span> in North America. Companion services are the fastest-growing sub-segment as the 65+ population expands.</p>
+        <p style="margin-top:0.3rem;font-size:0.68rem;font-style:italic;color:var(--mid);">Grand View Research, 2024</p>
       </div>
       <div class="market-segment">
-        <h4>🏘️ Community &amp; Neighborhood Platforms</h4>
-        <p><span class="seg-num">$5B+</span> and growing. Nextdoor's model proves demand for hyperlocal community — but leaves the human connection problem unsolved.</p>
-        <p style="margin-top: 0.4rem; font-size: 0.72rem; font-style: italic; color: var(--mid);">Statista / Nextdoor S-1 filing, 2021; updated 2024</p>
+        <h4>
+          <span class="seg-icon blue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A7BA7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          </span>
+          Community Platforms
+        </h4>
+        <p><span class="seg-num">$5B+</span> and growing. Nextdoor proves demand for hyperlocal community — but leaves human connection unsolved.</p>
+        <p style="margin-top:0.3rem;font-size:0.68rem;font-style:italic;color:var(--mid);">Statista / Nextdoor S-1, 2024</p>
       </div>
     </div>
   </div>
@@ -937,16 +839,13 @@
     <div class="section-label">The Founder</div>
     <h2>Built by someone who lives the problem.</h2>
     <div class="team-card">
-      <div class="team-photo-wrap">
-        <img class="team-photo" src="images/ilaria.jpg" alt="Ilaria Reale" />
-      </div>
+      <img class="team-photo" src="images/ilaria.jpg" alt="Ilaria Reale" />
       <div class="team-info">
         <div class="team-name">Ilaria Reale</div>
         <div class="team-role">Founder · Business Development &amp; Sustainability Specialist</div>
         <p class="team-bio">
           I'm Italian-born, Seattle-based, and I know firsthand what it feels like to build a life in a new city without a safety net. I moved from Rome to Seattle and immediately felt the gap: no family nearby, no village, no easy way to build one. My Village started as my own problem.<br><br>
-          With an MBA in Sustainability &amp; Entrepreneurship (Università di Trento) and 4+ years building businesses across CleanTech and biotech startups in Europe and the US, I bring together strategic thinking, investor relations experience, and a deep personal connection to what this platform needs to be. I've worked across Italy, the Netherlands, and the Pacific Northwest — and I've seen this loneliness everywhere.<br><br>
-          I'm currently looking for early users, feedback, co-founders, and advisors who believe community infrastructure is the next big opportunity.
+          With an MBA in Sustainability &amp; Entrepreneurship (Università di Trento) and 4+ years building businesses across CleanTech and biotech startups in Europe and the US, I bring strategic thinking, investor relations experience, and a deep personal connection to what this platform needs to be.
         </p>
         <div class="team-links">
           <a class="team-link" href="https://linkedin.com/in/ilariareale" target="_blank">LinkedIn →</a>
@@ -962,32 +861,23 @@
   <div class="container fade-in">
     <div class="section-label">Share Your Thoughts</div>
     <h2>Help us build the right thing.</h2>
-    <p class="lead">Three quick questions. Your answers will directly shape what we build. There are no right or wrong answers — just your honest experience.</p>
+    <p class="lead">Three quick questions. Your answers will directly shape what we build.</p>
     <form class="feedback-form" id="feedbackForm" action="https://formspree.io/f/xbdzklpgok" method="POST">
-
-      <!-- PROFILE BLOCK -->
       <div class="profile-block">
         <div class="block-title">Tell us a little about yourself — takes 30 seconds</div>
         <div class="profile-grid">
-
           <div class="profile-field">
             <label>Where do you live?</label>
             <input type="text" name="location" placeholder="e.g. Capitol Hill, Seattle" />
           </div>
-
           <div class="profile-field">
             <label>Age range</label>
             <select name="age_range">
               <option value="">Select...</option>
-              <option>18–24</option>
-              <option>25–34</option>
-              <option>35–44</option>
-              <option>45–54</option>
-              <option>55–64</option>
-              <option>65+</option>
+              <option>18–24</option><option>25–34</option><option>35–44</option>
+              <option>45–54</option><option>55–64</option><option>65+</option>
             </select>
           </div>
-
           <div class="profile-field full">
             <label>How many times have you relocated in your life?</label>
             <div class="radio-group">
@@ -997,7 +887,6 @@
               <label><input type="radio" name="relocations" value="4+ times" /><span>4+ times</span></label>
             </div>
           </div>
-
           <div class="profile-field full">
             <label>Do you have family living far away?</label>
             <div class="radio-group">
@@ -1007,12 +896,10 @@
               <label><input type="radio" name="family_distance" value="Different continent" /><span>Different continent</span></label>
             </div>
           </div>
-
         </div>
       </div>
-
       <div class="feedback-question">
-        <label>1. Have you personally experienced the challenge of finding community, childcare support, or connection in your city? <span>Tell us your story.</span></label>
+        <label>1. Have you experienced the challenge of finding community or childcare support in your city? <span>Tell us your story.</span></label>
         <textarea name="q1_experience" placeholder="e.g. I moved here 2 years ago and still feel like I don't know my neighbors..."></textarea>
       </div>
       <div class="feedback-question">
@@ -1025,7 +912,7 @@
         <p class="feedback-note">Your answer might become the next feature we build.</p>
       </div>
       <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
-        <input type="email" name="email" placeholder="Your email (optional — only if you want a reply)" style="flex:1; min-width:220px; padding:0.85rem 1.2rem; border:1.5px solid var(--border); border-radius:5px; font-size:0.9rem; font-family:sans-serif; outline:none;" />
+        <input type="email" name="email" placeholder="Your email (optional — only if you want a reply)" style="flex:1; min-width:200px; padding:0.8rem 1rem; border:1.5px solid var(--border); border-radius:5px; font-size:0.88rem; font-family:sans-serif; outline:none;" />
         <button type="submit" class="btn-primary">Send My Feedback →</button>
       </div>
     </form>
@@ -1052,49 +939,37 @@
       <button type="submit" class="btn-primary">Join Waitlist →</button>
     </form>
     <p class="form-note">No spam. No commitment. Just a heads-up when we're ready.</p>
-    <div class="success-msg" id="successMsg">
-      You're on the list! We'll be in touch when My Village launches near you.
-    </div>
+    <div class="success-msg" id="successMsg">You're on the list! We'll be in touch when My Village launches near you.</div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 <span>My Village</span> · Seattle, WA · Early Stage Startup · <a href="mailto:ilariareale24@gmail.com" style="color: rgba(255,255,255,0.6);">ilariareale24@gmail.com</a></p>
+  <p>© 2026 <span>My Village</span> · Seattle, WA · Early Stage Startup · <a href="mailto:ilariareale24@gmail.com" style="color:rgba(255,255,255,0.6);">ilariareale24@gmail.com</a></p>
 </footer>
 
 <script>
-  // Waitlist form
   function handleSubmit(e) {
     e.preventDefault();
     document.getElementById('waitlistForm').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
   }
 
-  // Scroll fade-in animations
+  // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
-  }, { threshold: 0.1 });
-
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Active nav link highlight on scroll
+  // Active nav highlight
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('a.nav-link');
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(section => {
-      const top = section.offsetTop - 100;
-      if (window.scrollY >= top) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.style.color = link.getAttribute('href') === '#' + current ? 'var(--charcoal)' : '';
-    });
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+    navLinks.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + current); });
   });
 </script>
 
