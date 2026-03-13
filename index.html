@@ -19,287 +19,236 @@
       --charcoal: #2C2C2C;
       --mid: #6B6B6B;
       --border: #E0D8CC;
-      --pink: #D4667A;
+      --app-pink: #C85F78;
+      --app-bg: #EEF2F0;
     }
 
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Georgia', serif;
-      background: var(--cream);
-      color: var(--charcoal);
-      line-height: 1.7;
-    }
+    body { font-family: 'Georgia', serif; background: var(--cream); color: var(--charcoal); line-height: 1.7; }
 
     /* NAV */
     nav {
-      position: sticky;
-      top: 0;
-      background: var(--cream);
+      position: sticky; top: 0; background: var(--cream);
       border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
+      padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 100;
     }
-    .logo {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: var(--sage);
-      letter-spacing: 0.02em;
-    }
+    .logo { font-size: 1.1rem; font-weight: bold; color: var(--sage); letter-spacing: 0.02em; }
     nav a.cta-small {
-      background: var(--terracotta);
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 1.2rem;
-      border-radius: 4px;
-      font-family: sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: background 0.2s;
+      background: var(--terracotta); color: white; text-decoration: none;
+      padding: 0.5rem 1.2rem; border-radius: 4px; font-family: sans-serif;
+      font-size: 0.85rem; font-weight: 600; transition: background 0.2s;
     }
     nav a.cta-small:hover { background: var(--terracotta-light); }
 
     /* HERO */
-    .hero {
-      background: var(--warm);
-      padding: 6rem 2rem 5rem;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
+    .hero { background: var(--warm); padding: 6rem 2rem 5rem; text-align: center; border-bottom: 1px solid var(--border); }
     .hero .eyebrow {
-      font-family: sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 1.2rem;
+      font-family: sans-serif; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.2rem;
     }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      line-height: 1.2;
-      color: var(--charcoal);
-      max-width: 780px;
-      margin: 0 auto 1.5rem;
-    }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.2; color: var(--charcoal); max-width: 780px; margin: 0 auto 1.5rem; }
     .hero h1 span { color: var(--sage); }
-    .hero .subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--mid);
-      max-width: 580px;
-      margin: 0 auto 2.5rem;
-    }
-    .hero-cta {
-      display: inline-flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    .hero .subtitle { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--mid); max-width: 580px; margin: 0 auto 2.5rem; }
+    .hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
     .btn-primary {
-      background: var(--terracotta);
-      color: white;
-      border: none;
-      padding: 0.9rem 2rem;
-      border-radius: 5px;
-      font-family: sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s;
+      background: var(--terracotta); color: white; border: none;
+      padding: 0.9rem 2rem; border-radius: 5px; font-family: sans-serif;
+      font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s;
     }
     .btn-primary:hover { background: var(--terracotta-light); }
     .btn-secondary {
-      background: transparent;
-      color: var(--sage);
-      border: 2px solid var(--sage);
-      padding: 0.9rem 2rem;
-      border-radius: 5px;
-      font-family: sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
+      background: transparent; color: var(--sage); border: 2px solid var(--sage);
+      padding: 0.9rem 2rem; border-radius: 5px; font-family: sans-serif;
+      font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: all 0.2s;
     }
     .btn-secondary:hover { background: var(--sage); color: white; }
 
-    /* STATS BAR */
+    /* STATS */
     .stats {
-      background: var(--sage);
-      color: white;
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      flex-wrap: wrap;
-      padding: 2rem;
-      text-align: center;
+      background: var(--sage); color: white;
+      display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; padding: 2rem; text-align: center;
     }
-    .stat-item .number {
-      font-size: 2rem;
-      font-weight: bold;
-      display: block;
-    }
-    .stat-item .label {
-      font-family: sans-serif;
-      font-size: 0.8rem;
-      opacity: 0.85;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
+    .stat-item .number { font-size: 2rem; font-weight: bold; display: block; }
+    .stat-item .label { font-family: sans-serif; font-size: 0.8rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.08em; }
 
     /* SECTION DEFAULTS */
     section { padding: 5rem 2rem; }
     .container { max-width: 960px; margin: 0 auto; }
     .section-label {
-      font-family: sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 0.8rem;
+      font-family: sans-serif; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.8rem;
     }
-    h2 {
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      line-height: 1.25;
-      margin-bottom: 1.2rem;
-      color: var(--charcoal);
-    }
-    .lead {
-      color: var(--mid);
-      max-width: 640px;
-      font-size: 1.05rem;
-      margin-bottom: 3rem;
-    }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.25; margin-bottom: 1.2rem; color: var(--charcoal); }
+    .lead { color: var(--mid); max-width: 640px; font-size: 1.05rem; margin-bottom: 3rem; }
 
     /* PROBLEM */
     .problem { background: var(--cream); }
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    .problem-card {
-      background: var(--warm);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.8rem 1.5rem;
-    }
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .problem-card { background: var(--warm); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem 1.5rem; }
     .problem-card .icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-    .problem-card h3 {
-      font-size: 1rem;
-      font-family: sans-serif;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
+    .problem-card h3 { font-size: 1rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.5rem; }
     .problem-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.6; }
 
     /* WHO IT'S FOR */
     .users { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .users-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-    .user-card {
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-    }
+    .users-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .user-card { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 2rem 1.5rem; text-align: center; }
     .user-card .user-emoji { font-size: 2.5rem; margin-bottom: 0.8rem; display: block; }
-    .user-card h3 {
-      font-size: 1rem;
-      font-family: sans-serif;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--charcoal);
-    }
+    .user-card h3 { font-size: 1rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.5rem; color: var(--charcoal); }
     .user-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
 
     /* SOLUTION */
     .solution { background: var(--cream); }
-    .solution-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    .solution-card {
-      border-left: 3px solid var(--sage);
-      padding: 1.2rem 1.5rem;
-      background: var(--warm);
-      border-radius: 0 8px 8px 0;
-    }
-    .solution-card h3 {
-      font-family: sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 0.4rem;
-      color: var(--sage);
-    }
+    .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .solution-card { border-left: 3px solid var(--sage); padding: 1.2rem 1.5rem; background: var(--warm); border-radius: 0 8px 8px 0; }
+    .solution-card h3 { font-family: sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--sage); }
     .solution-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
 
     /* PRODUCT PREVIEW */
     .preview { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .preview h2 { text-align: center; }
-    .preview .lead { text-align: center; margin-left: auto; margin-right: auto; }
-    .screens-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      align-items: start;
+    .preview > .container > h2 { text-align: center; }
+    .preview > .container > .lead { margin-left: auto; margin-right: auto; text-align: center; }
+    .screens-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: flex-start;
     }
-    .screen-item { text-align: center; }
-    .phone-frame {
-      background: #1a1a1a;
-      border-radius: 28px;
+    .screen-wrap { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .screen-caption { font-family: sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--charcoal); text-align: center; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* PHONE FRAME */
+    .phone-outer {
+      background: #1C1C1E;
+      border-radius: 36px;
       padding: 10px;
-      display: inline-block;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-      max-width: 260px;
-      width: 100%;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+      width: 260px;
     }
-    .phone-frame img {
-      width: 100%;
-      border-radius: 20px;
-      display: block;
+    .phone-inner {
+      background: var(--app-bg);
+      border-radius: 28px;
+      overflow: hidden;
+      height: 520px;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1C1C1E;
+      position: relative;
     }
-    .screen-label {
-      font-family: sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-top: 1rem;
+    .mock-scroll { flex: 1; overflow: hidden; }
+
+    /* APP MOCK — shared */
+    .mock-header { padding: 18px 16px 6px; }
+    .mock-title { font-size: 22px; font-weight: 800; letter-spacing: -0.4px; }
+    .mock-subtitle { font-size: 11px; color: #888; margin-top: 2px; }
+
+    .mock-chips { display: flex; gap: 6px; padding: 6px 16px; }
+    .mock-chip { padding: 3px 12px; border-radius: 14px; font-size: 11px; font-weight: 600; }
+    .mock-chip.on { background: var(--app-pink); color: white; }
+    .mock-chip.off { color: #999; background: transparent; }
+
+    .mock-filters { display: flex; gap: 6px; padding: 6px 16px 10px; overflow-x: hidden; }
+    .mock-pill { padding: 5px 11px; border-radius: 20px; font-size: 10.5px; font-weight: 600; white-space: nowrap; }
+    .mock-pill.on { background: var(--app-pink); color: white; }
+    .mock-pill.off { background: white; color: #555; }
+
+    .mock-featured {
+      margin: 4px 12px 10px;
+      background: #FDE8ED;
+      border-radius: 14px;
+      padding: 13px 14px;
     }
+    .mock-featured-label { font-size: 10px; color: var(--app-pink); font-weight: 600; margin-bottom: 5px; }
+    .mock-featured-name { font-size: 15px; font-weight: 800; color: #1C1C1E; margin-bottom: 4px; }
+    .mock-featured-desc { font-size: 11px; color: #666; line-height: 1.5; }
+
+    .mock-section-title { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #999; padding: 4px 16px 6px; }
+
+    .mock-neighbor {
+      margin: 3px 12px;
+      background: white;
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .mock-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: #E5DDD5; display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .mock-neighbor-name { font-weight: 700; font-size: 13px; }
+    .mock-tag {
+      display: inline-block; background: #FDE8ED; color: var(--app-pink);
+      font-size: 9.5px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-top: 3px;
+    }
+    .mock-tag.green { background: #E8F0E8; color: var(--sage); }
+    .mock-bio { font-size: 10.5px; color: #777; line-height: 1.4; margin-top: 3px; }
+
+    /* Chat screen */
+    .mock-chat-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 11px 14px; border-bottom: 1px solid #F0F0F0; background: white;
+    }
+    .mock-chat-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #EEF2F0; display: flex; align-items: center;
+      justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .mock-chat-info { flex: 1; min-width: 0; }
+    .mock-chat-name { font-weight: 700; font-size: 13px; }
+    .mock-chat-preview { font-size: 11px; color: #999; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mock-chat-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; }
+    .mock-chat-time { font-size: 10px; color: #bbb; }
+    .mock-badge {
+      background: var(--app-pink); color: white; font-size: 9px; font-weight: 800;
+      width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Profile screen */
+    .mock-profile-top { text-align: center; padding: 18px 16px 10px; }
+    .mock-profile-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--app-pink), var(--terracotta-light));
+      margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 28px;
+    }
+    .mock-profile-name { font-size: 18px; font-weight: 800; }
+    .mock-profile-bio { font-size: 10.5px; color: #666; line-height: 1.5; padding: 8px 16px 0; text-align: left; }
+    .mock-profile-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: #FDE8ED; color: var(--app-pink); font-size: 11px; font-weight: 700;
+      padding: 4px 12px; border-radius: 12px; margin: 10px 16px 0;
+    }
+    .mock-stats-row { display: flex; gap: 8px; margin: 12px 12px 0; }
+    .mock-stat-box { flex: 1; background: white; border-radius: 12px; padding: 12px 6px; text-align: center; }
+    .mock-stat-icon { font-size: 16px; display: block; margin-bottom: 3px; }
+    .mock-stat-num { font-size: 20px; font-weight: 800; display: block; }
+    .mock-stat-num.pink { color: var(--app-pink); }
+    .mock-stat-num.green { color: var(--sage); }
+    .mock-stat-label { font-size: 9px; color: #aaa; display: block; margin-top: 2px; }
+
+    /* BOTTOM NAV */
+    .mock-nav {
+      background: white; border-top: 1px solid #EBEBEB;
+      display: flex; justify-content: space-around; padding: 8px 0 10px; flex-shrink: 0;
+    }
+    .mock-nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; cursor: default; }
+    .mock-nav-icon { font-size: 16px; line-height: 1; }
+    .mock-nav-label { font-size: 9px; color: #aaa; font-weight: 500; }
+    .mock-nav-item.on .mock-nav-label { color: var(--app-pink); font-weight: 700; }
+    .mock-nav-bar { width: 20px; height: 2px; background: var(--app-pink); border-radius: 1px; margin-bottom: 3px; }
 
     /* HOW IT WORKS */
     .how { background: var(--cream); }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
     .step { text-align: center; }
     .step-num {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--sage);
-      color: white;
-      font-family: sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
+      width: 48px; height: 48px; border-radius: 50%; background: var(--sage); color: white;
+      font-family: sans-serif; font-weight: 700; font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
     }
     .step h3 { font-size: 1rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.5rem; }
     .step p { font-size: 0.9rem; color: var(--mid); }
@@ -313,71 +262,33 @@
     .signup { background: var(--warm); border-top: 1px solid var(--border); text-align: center; }
     .signup h2 { max-width: 600px; margin: 0 auto 0.8rem; }
     .signup .sub { color: var(--mid); margin-bottom: 2.5rem; font-size: 1.05rem; }
-    .signup-form {
-      display: flex;
-      gap: 0.8rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      max-width: 520px;
-      margin: 0 auto;
-    }
+    .signup-form { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; max-width: 520px; margin: 0 auto; }
     .signup-form input[type="email"] {
-      flex: 1;
-      min-width: 220px;
-      padding: 0.85rem 1.2rem;
-      border: 1.5px solid var(--border);
-      border-radius: 5px;
-      font-size: 1rem;
-      font-family: sans-serif;
-      background: white;
-      color: var(--charcoal);
-      outline: none;
-      transition: border-color 0.2s;
+      flex: 1; min-width: 220px; padding: 0.85rem 1.2rem;
+      border: 1.5px solid var(--border); border-radius: 5px; font-size: 1rem;
+      font-family: sans-serif; background: white; color: var(--charcoal); outline: none; transition: border-color 0.2s;
     }
     .signup-form input[type="email"]:focus { border-color: var(--sage); }
     .signup-form select {
-      padding: 0.85rem 1.2rem;
-      border: 1.5px solid var(--border);
-      border-radius: 5px;
-      font-size: 0.9rem;
-      font-family: sans-serif;
-      background: white;
-      color: var(--charcoal);
-      cursor: pointer;
-      outline: none;
+      padding: 0.85rem 1.2rem; border: 1.5px solid var(--border); border-radius: 5px;
+      font-size: 0.9rem; font-family: sans-serif; background: white; color: var(--charcoal); cursor: pointer; outline: none;
     }
     .signup-form .btn-primary { white-space: nowrap; }
-    .form-note {
-      font-family: sans-serif;
-      font-size: 0.8rem;
-      color: var(--mid);
-      margin-top: 1rem;
-    }
+    .form-note { font-family: sans-serif; font-size: 0.8rem; color: var(--mid); margin-top: 1rem; }
     .success-msg {
-      display: none;
-      background: var(--sage);
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 5px;
-      font-family: sans-serif;
-      margin-top: 1rem;
+      display: none; background: var(--sage); color: white;
+      padding: 1rem 2rem; border-radius: 5px; font-family: sans-serif; margin-top: 1rem;
     }
 
     /* FOOTER */
-    footer {
-      background: var(--charcoal);
-      color: rgba(255,255,255,0.5);
-      text-align: center;
-      padding: 2rem;
-      font-family: sans-serif;
-      font-size: 0.8rem;
-    }
+    footer { background: var(--charcoal); color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-family: sans-serif; font-size: 0.8rem; }
     footer span { color: rgba(255,255,255,0.8); }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .stats { gap: 2rem; }
       nav { padding: 0.8rem 1rem; }
-      .screens-grid { grid-template-columns: 1fr 1fr; }
+      .phone-outer { width: 240px; }
+      .phone-inner { height: 480px; }
     }
   </style>
 </head>
@@ -423,9 +334,7 @@
   <div class="container">
     <div class="section-label">The Problem</div>
     <h2>Modern life broke the village.</h2>
-    <p class="lead">
-      Three separate crises — unaffordable childcare, senior isolation, and fragmented neighborhoods — are actually one problem: we lost the village. And no app has tried to rebuild it.
-    </p>
+    <p class="lead">Three separate crises — unaffordable childcare, senior isolation, and fragmented neighborhoods — are actually one problem: we lost the village. And no app has tried to rebuild it.</p>
     <div class="problem-grid">
       <div class="problem-card">
         <div class="icon">💸</div>
@@ -456,7 +365,7 @@
   <div class="container">
     <div class="section-label">Who It's For</div>
     <h2>Four people. One village.</h2>
-    <p class="lead">My Village brings together people who have complementary needs — and turns them into a real community.</p>
+    <p class="lead">My Village brings together people who have complementary needs and turns them into a real community.</p>
     <div class="users-grid">
       <div class="user-card">
         <span class="user-emoji">👨‍👩‍👧</span>
@@ -476,7 +385,7 @@
       <div class="user-card">
         <span class="user-emoji">🤝</span>
         <h3>Caregivers</h3>
-        <p>People who offer help — cooking, language exchange, babysitting, errands — and want to be part of a network of trust.</p>
+        <p>People who offer help — cooking, language exchange, babysitting, errands — and want to be part of a trusted network.</p>
       </div>
     </div>
   </div>
@@ -487,9 +396,7 @@
   <div class="container">
     <div class="section-label">The Solution</div>
     <h2>My Village: a community platform built on who you are, not what you do.</h2>
-    <p class="lead">
-      Instead of a work resume, your profile reflects your passions, origins, availability, and what you can offer. The app finds genuine matches nearby and helps you build real relationships — not transactions.
-    </p>
+    <p class="lead">Instead of a work resume, your profile reflects your passions, origins, availability, and what you can offer. The app finds genuine matches nearby and helps you build real relationships — not transactions.</p>
     <div class="solution-grid">
       <div class="solution-card">
         <h3>Discover Neighbors</h3>
@@ -515,33 +422,228 @@
 <section class="preview" id="preview">
   <div class="container">
     <div class="section-label">The Product</div>
-    <h2>Already working. Already real.</h2>
-    <p class="lead">Here's a first look at the My Village app — built to feel warm, personal, and easy to use for everyone, regardless of age.</p>
-    <div class="screens-grid">
-      <div class="screen-item">
-        <div class="phone-frame">
-          <img src="images/screen-discover.png" alt="Discover neighbors screen" />
+    <h2>Already built. Already real.</h2>
+    <p class="lead">A first look at the My Village app — designed to feel warm, personal, and easy for everyone regardless of age.</p>
+
+    <div class="screens-row">
+
+      <!-- SCREEN 1: DISCOVER -->
+      <div class="screen-wrap">
+        <div class="phone-outer">
+          <div class="phone-inner">
+            <div class="mock-scroll">
+              <div class="mock-header">
+                <div class="mock-title">Your Village</div>
+              </div>
+              <div class="mock-chips">
+                <span class="mock-chip on">Seattle</span>
+                <span class="mock-chip off">New York</span>
+              </div>
+              <div class="mock-filters">
+                <span class="mock-pill on">All neighbors</span>
+                <span class="mock-pill off">👨‍👩‍👧 Family</span>
+                <span class="mock-pill off">🧓 Senior</span>
+                <span class="mock-pill off">😊 Individual</span>
+              </div>
+              <div class="mock-featured">
+                <div class="mock-featured-label">♡ A neighbor who'd love to meet you</div>
+                <div class="mock-featured-name">Elena wants to share Sunday dinners</div>
+                <div class="mock-featured-desc">She lives nearby and dreams of a big family table. She speaks Italian &amp; English and loves cooking pasta from scratch.</div>
+              </div>
+              <div class="mock-section-title">3 neighbors in your village</div>
+              <div class="mock-neighbor">
+                <div class="mock-avatar">👤</div>
+                <div>
+                  <div class="mock-neighbor-name">Chetnnya Jain</div>
+                  <span class="mock-tag">😊 Individual</span>
+                </div>
+              </div>
+              <div class="mock-neighbor">
+                <div class="mock-avatar">🧓</div>
+                <div>
+                  <div class="mock-neighbor-name">Roberto Morales</div>
+                  <span class="mock-tag green">🧓 Senior</span>
+                  <div class="mock-bio">Retired carpenter. Happy to help neighbors with small repairs.</div>
+                </div>
+              </div>
+              <div class="mock-neighbor">
+                <div class="mock-avatar">👨‍👩‍👧</div>
+                <div>
+                  <div class="mock-neighbor-name">The Kim Family</div>
+                  <span class="mock-tag">👨‍👩‍👧 Family</span>
+                </div>
+              </div>
+            </div>
+            <div class="mock-nav">
+              <div class="mock-nav-item on">
+                <div class="mock-nav-bar"></div>
+                <span class="mock-nav-icon">◎</span>
+                <span class="mock-nav-label">Discover</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">📅</span>
+                <span class="mock-nav-label">Events</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">↗</span>
+                <span class="mock-nav-label">Share</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">💬</span>
+                <span class="mock-nav-label">Chat</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">👤</span>
+                <span class="mock-nav-label">Profile</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="screen-label">Discover</div>
+        <div class="screen-caption">Discover Neighbors</div>
       </div>
-      <div class="screen-item">
-        <div class="phone-frame">
-          <img src="images/screen-events.png" alt="Village events screen" />
+
+      <!-- SCREEN 2: CHAT -->
+      <div class="screen-wrap">
+        <div class="phone-outer">
+          <div class="phone-inner">
+            <div class="mock-scroll">
+              <div class="mock-header">
+                <div class="mock-title">Messages</div>
+              </div>
+              <div style="height:10px;"></div>
+              <div class="mock-chat-row">
+                <div class="mock-chat-avatar">👵</div>
+                <div class="mock-chat-info">
+                  <div class="mock-chat-name">Elena Rossi</div>
+                  <div class="mock-chat-preview">I would love to cook together this weekend!</div>
+                </div>
+                <div class="mock-chat-meta">
+                  <span class="mock-chat-time">2m ago</span>
+                  <span class="mock-badge">2</span>
+                </div>
+              </div>
+              <div class="mock-chat-row">
+                <div class="mock-chat-avatar">🧓</div>
+                <div class="mock-chat-info">
+                  <div class="mock-chat-name">Roberto Morales</div>
+                  <div class="mock-chat-preview">I can fix that shelf for you, no problem!</div>
+                </div>
+                <div class="mock-chat-meta">
+                  <span class="mock-chat-time">1h ago</span>
+                </div>
+              </div>
+              <div class="mock-chat-row">
+                <div class="mock-chat-avatar">👨‍👩‍👧</div>
+                <div class="mock-chat-info">
+                  <div class="mock-chat-name">James &amp; David</div>
+                  <div class="mock-chat-preview">Movie night Friday? We have popcorn! 🍿</div>
+                </div>
+                <div class="mock-chat-meta">
+                  <span class="mock-chat-time">3h ago</span>
+                  <span class="mock-badge">1</span>
+                </div>
+              </div>
+              <div class="mock-chat-row">
+                <div class="mock-chat-avatar">👨‍👩‍👧</div>
+                <div class="mock-chat-info">
+                  <div class="mock-chat-name">The Kim Family</div>
+                  <div class="mock-chat-preview">Korean BBQ this Saturday at our place!</div>
+                </div>
+                <div class="mock-chat-meta">
+                  <span class="mock-chat-time">Yesterday</span>
+                </div>
+              </div>
+            </div>
+            <div class="mock-nav">
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">◎</span>
+                <span class="mock-nav-label">Discover</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">📅</span>
+                <span class="mock-nav-label">Events</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">↗</span>
+                <span class="mock-nav-label">Share</span>
+              </div>
+              <div class="mock-nav-item on">
+                <div class="mock-nav-bar"></div>
+                <span class="mock-nav-icon">💬</span>
+                <span class="mock-nav-label">Chat</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">👤</span>
+                <span class="mock-nav-label">Profile</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="screen-label">Village Events</div>
+        <div class="screen-caption">Stay Connected</div>
       </div>
-      <div class="screen-item">
-        <div class="phone-frame">
-          <img src="images/screen-chat.png" alt="Messages screen" />
+
+      <!-- SCREEN 3: PROFILE -->
+      <div class="screen-wrap">
+        <div class="phone-outer">
+          <div class="phone-inner">
+            <div class="mock-scroll">
+              <div class="mock-header">
+                <div class="mock-title">My Profile</div>
+              </div>
+              <div class="mock-profile-top">
+                <div class="mock-profile-avatar">🙋‍♀️</div>
+                <div class="mock-profile-name">Ilaria</div>
+              </div>
+              <div class="mock-profile-bio">
+                Hi neighbors! I moved to Seattle from Rome 6 months ago and I'm still building my little community here. I played volleyball for 10+ years and I'm dreaming of a casual group — people who love the game and being outside.
+              </div>
+              <div class="mock-profile-tag">👨‍👩‍👧 Family</div>
+              <div class="mock-stats-row">
+                <div class="mock-stat-box">
+                  <span class="mock-stat-icon">👥</span>
+                  <span class="mock-stat-num pink">12</span>
+                  <span class="mock-stat-label">Connections</span>
+                </div>
+                <div class="mock-stat-box">
+                  <span class="mock-stat-icon">♡</span>
+                  <span class="mock-stat-num pink">8</span>
+                  <span class="mock-stat-label">Offers Made</span>
+                </div>
+                <div class="mock-stat-box">
+                  <span class="mock-stat-icon">🌿</span>
+                  <span class="mock-stat-num green">4.9</span>
+                  <span class="mock-stat-label">Village Score</span>
+                </div>
+              </div>
+            </div>
+            <div class="mock-nav">
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">◎</span>
+                <span class="mock-nav-label">Discover</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">📅</span>
+                <span class="mock-nav-label">Events</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">↗</span>
+                <span class="mock-nav-label">Share</span>
+              </div>
+              <div class="mock-nav-item">
+                <span class="mock-nav-icon">💬</span>
+                <span class="mock-nav-label">Chat</span>
+              </div>
+              <div class="mock-nav-item on">
+                <div class="mock-nav-bar"></div>
+                <span class="mock-nav-icon">👤</span>
+                <span class="mock-nav-label">Profile</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="screen-label">Messages</div>
+        <div class="screen-caption">Your Village Profile</div>
       </div>
-      <div class="screen-item">
-        <div class="phone-frame">
-          <img src="images/screen-profile.png" alt="Profile screen" />
-        </div>
-        <div class="screen-label">Your Profile</div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -577,15 +679,10 @@
   <div class="container">
     <div class="section-label" style="color: rgba(255,255,255,0.6);">Our Vision</div>
     <h2>More than an app. A new kind of community infrastructure.</h2>
-    <p>
-      Think of it as the digital version of how communities used to work — word of mouth, trust, reciprocity.
-      Where you could knock on a neighbor's door and ask for help. Where an elder was a resource, not a burden.
-    </p>
-    <p>
-      We're building the platform that makes that possible again — at scale, across cities, for everyone who's ever felt that raising kids or growing old shouldn't be this lonely.
-    </p>
+    <p>Think of it as the digital version of how communities used to work — word of mouth, trust, reciprocity. Where you could knock on a neighbor's door and ask for help. Where an elder was a resource, not a burden.</p>
+    <p>We're building the platform that makes that possible again — at scale, across cities, for everyone who's ever felt that raising kids or growing old shouldn't be this lonely.</p>
     <br />
-    <a class="btn-primary" href="#signup" style="display: inline-block;">Join the Early Community →</a>
+    <a class="btn-primary" href="#signup" style="display:inline-block;">Join the Early Community →</a>
   </div>
 </section>
 
@@ -594,9 +691,7 @@
   <div class="container">
     <div class="section-label">Early Access</div>
     <h2>We're validating this idea — and we'd love to hear from you.</h2>
-    <p class="sub">
-      Tell us who you are and we'll reach out personally. No spam. Just a real conversation.
-    </p>
+    <p class="sub">Tell us who you are and we'll reach out personally. No spam. Just a real conversation.</p>
     <form class="signup-form" id="waitlistForm" onsubmit="handleSubmit(event)">
       <input type="email" placeholder="Your email address" required />
       <select>
