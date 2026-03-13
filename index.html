@@ -1018,28 +1018,25 @@
     <div class="section-label">Share Your Thoughts</div>
     <h2>Help us build the right thing.</h2>
     <p class="lead">Three quick questions. Your answers will directly shape what we build. There are no right or wrong answers — just your honest experience.</p>
-    <form class="feedback-form" id="feedbackForm" onsubmit="handleFeedback(event)">
+    <form class="feedback-form" id="feedbackForm" action="https://formspree.io/f/xbdzklpg" method="POST">
       <div class="feedback-question">
         <label>1. Have you personally experienced the challenge of finding community, childcare support, or connection in your city? <span>Tell us your story.</span></label>
-        <textarea placeholder="e.g. I moved here 2 years ago and still feel like I don't know my neighbors..."></textarea>
+        <textarea name="q1_experience" placeholder="e.g. I moved here 2 years ago and still feel like I don't know my neighbors..."></textarea>
       </div>
       <div class="feedback-question">
         <label>2. Would you use an app like My Village? <span>What would make you sign up — and what would make you hesitate?</span></label>
-        <textarea placeholder="e.g. I'd sign up if I could see who's nearby first before sharing anything personal..."></textarea>
+        <textarea name="q2_would_use" placeholder="e.g. I'd sign up if I could see who's nearby first before sharing anything personal..."></textarea>
       </div>
       <div class="feedback-question">
         <label>3. Is there a specific community need you have right now that you don't know how to solve? <span>Anything goes.</span></label>
-        <textarea placeholder="e.g. I need someone to pick up my kids twice a week, or my dad is lonely and I live far away..."></textarea>
+        <textarea name="q3_community_need" placeholder="e.g. I need someone to pick up my kids twice a week, or my dad is lonely and I live far away..."></textarea>
         <p class="feedback-note">Your answer might become the next feature we build.</p>
       </div>
       <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
-        <input type="email" placeholder="Your email (optional — only if you want a reply)" style="flex:1; min-width:220px; padding:0.85rem 1.2rem; border:1.5px solid var(--border); border-radius:5px; font-size:0.9rem; font-family:sans-serif; outline:none;" />
+        <input type="email" name="email" placeholder="Your email (optional — only if you want a reply)" style="flex:1; min-width:220px; padding:0.85rem 1.2rem; border:1.5px solid var(--border); border-radius:5px; font-size:0.9rem; font-family:sans-serif; outline:none;" />
         <button type="submit" class="btn-primary">Send My Feedback →</button>
       </div>
     </form>
-    <div class="feedback-success" id="feedbackSuccess">
-      Thank you — this means a lot. We read every single response personally and will follow up if you left your email. You're helping build something real.
-    </div>
   </div>
 </section>
 
