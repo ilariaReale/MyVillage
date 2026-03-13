@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Village — Build Community. Raise Children Together.</title>
-  <meta name="description" content="Connecting families with seniors and neighbors to reduce childcare costs, fight isolation, and rebuild intergenerational community." />
+  <meta name="description" content="Connecting families, seniors, and neighbors to reduce childcare costs, fight isolation, and rebuild intergenerational community." />
   <meta name="robots" content="noindex, nofollow" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,6 +19,7 @@
       --charcoal: #2C2C2C;
       --mid: #6B6B6B;
       --border: #E0D8CC;
+      --pink: #D4667A;
     }
 
     html { scroll-behavior: smooth; }
@@ -86,9 +87,9 @@
     }
     .hero h1 span { color: var(--sage); }
     .hero .subtitle {
-      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-size: clamp(1rem, 2vw, 1.2rem);
       color: var(--mid);
-      max-width: 600px;
+      max-width: 580px;
       margin: 0 auto 2.5rem;
     }
     .hero-cta {
@@ -152,7 +153,7 @@
 
     /* SECTION DEFAULTS */
     section { padding: 5rem 2rem; }
-    .container { max-width: 900px; margin: 0 auto; }
+    .container { max-width: 960px; margin: 0 auto; }
     .section-label {
       font-family: sans-serif;
       font-size: 0.75rem;
@@ -165,22 +166,27 @@
     h2 {
       font-size: clamp(1.7rem, 3vw, 2.4rem);
       line-height: 1.25;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       color: var(--charcoal);
+    }
+    .lead {
+      color: var(--mid);
+      max-width: 640px;
+      font-size: 1.05rem;
+      margin-bottom: 3rem;
     }
 
     /* PROBLEM */
     .problem { background: var(--cream); }
     .problem-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
-      margin-top: 3rem;
     }
     .problem-card {
       background: var(--warm);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 1.8rem 1.5rem;
     }
     .problem-card .icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
@@ -189,21 +195,96 @@
       font-family: sans-serif;
       font-weight: 700;
       margin-bottom: 0.5rem;
+    }
+    .problem-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.6; }
+
+    /* WHO IT'S FOR */
+    .users { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .users-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .user-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .user-card .user-emoji { font-size: 2.5rem; margin-bottom: 0.8rem; display: block; }
+    .user-card h3 {
+      font-size: 1rem;
+      font-family: sans-serif;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
       color: var(--charcoal);
     }
-    .problem-card p {
-      font-size: 0.9rem;
-      color: var(--mid);
-      line-height: 1.6;
-    }
+    .user-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
 
-    /* HOW IT WORKS */
-    .how { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .steps {
+    /* SOLUTION */
+    .solution { background: var(--cream); }
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .solution-card {
+      border-left: 3px solid var(--sage);
+      padding: 1.2rem 1.5rem;
+      background: var(--warm);
+      border-radius: 0 8px 8px 0;
+    }
+    .solution-card h3 {
+      font-family: sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      color: var(--sage);
+    }
+    .solution-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+
+    /* PRODUCT PREVIEW */
+    .preview { background: var(--warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .preview h2 { text-align: center; }
+    .preview .lead { text-align: center; margin-left: auto; margin-right: auto; }
+    .screens-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem;
-      margin-top: 3rem;
+      align-items: start;
+    }
+    .screen-item { text-align: center; }
+    .phone-frame {
+      background: #1a1a1a;
+      border-radius: 28px;
+      padding: 10px;
+      display: inline-block;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      max-width: 260px;
+      width: 100%;
+    }
+    .phone-frame img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+    }
+    .screen-label {
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 1rem;
+    }
+
+    /* HOW IT WORKS */
+    .how { background: var(--cream); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
     }
     .step { text-align: center; }
     .step-num {
@@ -220,41 +301,8 @@
       justify-content: center;
       margin: 0 auto 1rem;
     }
-    .step h3 {
-      font-size: 1rem;
-      font-family: sans-serif;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
+    .step h3 { font-size: 1rem; font-family: sans-serif; font-weight: 700; margin-bottom: 0.5rem; }
     .step p { font-size: 0.9rem; color: var(--mid); }
-
-    /* QUOTES */
-    .quotes { background: var(--cream); }
-    .quotes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    .quote-card {
-      border-left: 3px solid var(--terracotta);
-      padding: 1.5rem;
-      background: var(--warm);
-      border-radius: 0 8px 8px 0;
-    }
-    .quote-card blockquote {
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--charcoal);
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-    .quote-card .attribution {
-      font-family: sans-serif;
-      font-size: 0.8rem;
-      color: var(--mid);
-      font-weight: 600;
-    }
 
     /* VISION */
     .vision { background: var(--sage); color: white; }
@@ -329,6 +377,7 @@
     @media (max-width: 600px) {
       .stats { gap: 2rem; }
       nav { padding: 0.8rem 1rem; }
+      .screens-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -343,14 +392,13 @@
 <!-- HERO -->
 <section class="hero">
   <div class="eyebrow">Early Stage · Seattle, WA · Seeking Feedback</div>
-  <h1>Your village is out there.<br><span>Let's help you find it.</span></h1>
+  <h1>The village that used to raise your kids<br><span>doesn't exist anymore. Let's rebuild it.</span></h1>
   <p class="subtitle">
-    A community platform connecting families, seniors, and neighbors —
-    to share childcare, reduce costs, and build the intergenerational bonds we've lost.
+    My Village connects families, seniors, and neighbors — to share childcare, reduce costs, and rebuild the intergenerational bonds we've lost.
   </p>
   <div class="hero-cta">
     <a class="btn-primary" href="#signup">Get Early Access</a>
-    <a class="btn-secondary" href="#how">See How It Works</a>
+    <a class="btn-secondary" href="#preview">See the App</a>
   </div>
 </section>
 
@@ -366,7 +414,7 @@
   </div>
   <div class="stat-item">
     <span class="number">47M</span>
-    <span class="label">immigrants in the US with family far away</span>
+    <span class="label">immigrants in the US raising kids far from home</span>
   </div>
 </div>
 
@@ -374,32 +422,125 @@
 <section class="problem">
   <div class="container">
     <div class="section-label">The Problem</div>
-    <h2>Modern life broke the village.<br>We want to rebuild it.</h2>
-    <p style="color: var(--mid); max-width: 640px;">
-      Families pay a fortune for childcare from strangers. Seniors lose their friends and sit alone.
-      Immigrants raise children thousands of miles from their own parents. And neighbors don't know each other's names.
-      These aren't separate problems — they're one.
+    <h2>Modern life broke the village.</h2>
+    <p class="lead">
+      Three separate crises — unaffordable childcare, senior isolation, and fragmented neighborhoods — are actually one problem: we lost the village. And no app has tried to rebuild it.
     </p>
     <div class="problem-grid">
       <div class="problem-card">
         <div class="icon">💸</div>
         <h3>Childcare is unaffordable</h3>
-        <p>$30–$50/hr for a babysitter. Over $4,000/month for daycare. Families are stretched to the limit.</p>
+        <p>$30–$50/hr for a babysitter. Over $4,000/month for daycare. Families are stretched to the breaking point — and many are dropping out of the workforce.</p>
       </div>
       <div class="problem-card">
         <div class="icon">🧓</div>
         <h3>Seniors are isolated</h3>
-        <p>Friends pass away. Children move. Seniors have time, wisdom, and love to give — but no way to connect.</p>
+        <p>Friends pass away. Children move cities. Seniors have time, wisdom, and love to give — but no infrastructure to share it. Loneliness is now a public health crisis.</p>
       </div>
       <div class="problem-card">
         <div class="icon">🌍</div>
-        <h3>Families are far apart</h3>
-        <p>Grandparents are on another continent. The bonds that used to hold communities together are missing.</p>
+        <h3>Immigrants raise kids alone</h3>
+        <p>Grandparents are on another continent. No aunts, no cousins, no family safety net. Communities that should form naturally — don't.</p>
       </div>
       <div class="problem-card">
         <div class="icon">🏘️</div>
-        <h3>Neighborhoods feel empty</h3>
-        <p>We live next door to each other but don't know each other. Real community doesn't happen by accident anymore.</p>
+        <h3>Neighbors are strangers</h3>
+        <p>We live next door to each other for years without knowing each other's names. Real community doesn't happen by accident anymore — it needs a platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="users">
+  <div class="container">
+    <div class="section-label">Who It's For</div>
+    <h2>Four people. One village.</h2>
+    <p class="lead">My Village brings together people who have complementary needs — and turns them into a real community.</p>
+    <div class="users-grid">
+      <div class="user-card">
+        <span class="user-emoji">👨‍👩‍👧</span>
+        <h3>Families</h3>
+        <p>Parents who need childcare support, playdates, and community — without paying a fortune for strangers.</p>
+      </div>
+      <div class="user-card">
+        <span class="user-emoji">🧓</span>
+        <h3>Seniors</h3>
+        <p>Retirees with time, warmth, and skills to share — looking for purpose and genuine human connection.</p>
+      </div>
+      <div class="user-card">
+        <span class="user-emoji">😊</span>
+        <h3>Individuals</h3>
+        <p>People new to a city, navigating a life transition, or simply wanting to put down roots in their neighborhood.</p>
+      </div>
+      <div class="user-card">
+        <span class="user-emoji">🤝</span>
+        <h3>Caregivers</h3>
+        <p>People who offer help — cooking, language exchange, babysitting, errands — and want to be part of a network of trust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <div class="section-label">The Solution</div>
+    <h2>My Village: a community platform built on who you are, not what you do.</h2>
+    <p class="lead">
+      Instead of a work resume, your profile reflects your passions, origins, availability, and what you can offer. The app finds genuine matches nearby and helps you build real relationships — not transactions.
+    </p>
+    <div class="solution-grid">
+      <div class="solution-card">
+        <h3>Discover Neighbors</h3>
+        <p>Browse nearby families, seniors, and individuals by type. Get a "neighbor who'd love to meet you" suggestion every day.</p>
+      </div>
+      <div class="solution-card">
+        <h3>Village Events</h3>
+        <p>Create and join local events — Swaps, Strolls, Playdates, Meals, Garden days. Meet in real life, not just online.</p>
+      </div>
+      <div class="solution-card">
+        <h3>Direct Messaging</h3>
+        <p>Chat directly with your neighbors. Coordinate a cooking session, a pickup, a shared afternoon — naturally.</p>
+      </div>
+      <div class="solution-card">
+        <h3>Village Score</h3>
+        <p>Track your connections, offers made, and Village Score. A reputation system built on generosity, not followers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT PREVIEW -->
+<section class="preview" id="preview">
+  <div class="container">
+    <div class="section-label">The Product</div>
+    <h2>Already working. Already real.</h2>
+    <p class="lead">Here's a first look at the My Village app — built to feel warm, personal, and easy to use for everyone, regardless of age.</p>
+    <div class="screens-grid">
+      <div class="screen-item">
+        <div class="phone-frame">
+          <img src="images/screen-discover.png" alt="Discover neighbors screen" />
+        </div>
+        <div class="screen-label">Discover</div>
+      </div>
+      <div class="screen-item">
+        <div class="phone-frame">
+          <img src="images/screen-events.png" alt="Village events screen" />
+        </div>
+        <div class="screen-label">Village Events</div>
+      </div>
+      <div class="screen-item">
+        <div class="phone-frame">
+          <img src="images/screen-chat.png" alt="Messages screen" />
+        </div>
+        <div class="screen-label">Messages</div>
+      </div>
+      <div class="screen-item">
+        <div class="phone-frame">
+          <img src="images/screen-profile.png" alt="Profile screen" />
+        </div>
+        <div class="screen-label">Your Profile</div>
       </div>
     </div>
   </div>
@@ -409,11 +550,8 @@
 <section class="how" id="how">
   <div class="container">
     <div class="section-label">How It Works</div>
-    <h2>A LinkedIn for community — built on who you are, not what you do.</h2>
-    <p style="color: var(--mid); max-width: 640px;">
-      Instead of a work resume, your profile highlights your passions, cultural background, availability, and what you need.
-      The app finds genuine matches in your neighborhood — and helps you build real relationships over time.
-    </p>
+    <h2>Simple by design. Meaningful by nature.</h2>
+    <p class="lead">Three steps to find your village.</p>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
@@ -427,35 +565,8 @@
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>Start small, grow real</h3>
-        <p>A first meeting, a shared meal, an afternoon with the kids. Relationships that are genuine — not transactional.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
         <h3>Build your village</h3>
-        <p>Over time, you gain a network of trusted neighbors — reducing costs, loneliness, and the feeling of doing it all alone.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTES -->
-<section class="quotes">
-  <div class="container">
-    <div class="section-label">What We're Hearing</div>
-    <h2>Real voices. Real needs.</h2>
-    <div class="quotes-grid">
-      <div class="quote-card">
-        <blockquote>"We pay $4,700 a month for both kids. If I could cut that in half, it would genuinely change our family budget."</blockquote>
-        <div class="attribution">— Josh, father of 2, Kirkland WA</div>
-      </div>
-      <div class="quote-card">
-        <blockquote>"I moved to Seattle not knowing anyone, then got pregnant. Now I have a baby and no time to make friends. I just want a community around me."</blockquote>
-        <div class="attribution">— Valerie, mother of a 7-month-old, Seattle WA</div>
-      </div>
-      <div class="quote-card">
-        <blockquote>"My father is Venezuelan — he'd love someone to cook him a meal from home, speak Spanish with him, and just be a friend. Not a caretaker. A friend."</blockquote>
-        <div class="attribution">— Karon, Co.Motion Seattle</div>
+        <p>A first meeting, a shared meal, an afternoon with the kids. Real relationships — not transactions. Your village grows over time.</p>
       </div>
     </div>
   </div>
@@ -465,16 +576,16 @@
 <section class="vision">
   <div class="container">
     <div class="section-label" style="color: rgba(255,255,255,0.6);">Our Vision</div>
-    <h2>More than childcare. A new kind of community infrastructure.</h2>
+    <h2>More than an app. A new kind of community infrastructure.</h2>
     <p>
       Think of it as the digital version of how communities used to work — word of mouth, trust, reciprocity.
       Where you could knock on a neighbor's door and ask for help. Where an elder was a resource, not a burden.
     </p>
     <p>
-      We're building a platform that scales that feeling.
-      Whether it's a "grandparent" who watches the kids on weekends, a neighbor who cooks traditional food for an elderly man who misses home,
-      or a teenager who helps a senior use a smartphone — every connection matters.
+      We're building the platform that makes that possible again — at scale, across cities, for everyone who's ever felt that raising kids or growing old shouldn't be this lonely.
     </p>
+    <br />
+    <a class="btn-primary" href="#signup" style="display: inline-block;">Join the Early Community →</a>
   </div>
 </section>
 
@@ -482,23 +593,24 @@
 <section class="signup" id="signup">
   <div class="container">
     <div class="section-label">Early Access</div>
-    <h2>We're in early conversations — and we'd love to hear from you.</h2>
+    <h2>We're validating this idea — and we'd love to hear from you.</h2>
     <p class="sub">
-      We're not building in a vacuum. Tell us who you are and we'll be in touch to hear your story.
+      Tell us who you are and we'll reach out personally. No spam. Just a real conversation.
     </p>
     <form class="signup-form" id="waitlistForm" onsubmit="handleSubmit(event)">
       <input type="email" placeholder="Your email address" required />
       <select>
         <option value="">I am a...</option>
-        <option value="parent">Parent / Family</option>
+        <option value="family">Parent / Family</option>
         <option value="senior">Senior / Retiree</option>
-        <option value="neighbor">Interested neighbor</option>
+        <option value="individual">Individual / Neighbor</option>
+        <option value="caregiver">Caregiver</option>
         <option value="investor">Investor / Advisor</option>
         <option value="other">Other</option>
       </select>
       <button type="submit" class="btn-primary">Join Waitlist →</button>
     </form>
-    <p class="form-note">No spam. No commitment. Just a conversation.</p>
+    <p class="form-note">No commitment. Just a conversation about whether this matters to you.</p>
     <div class="success-msg" id="successMsg">
       Thank you! We'll reach out soon. You're helping us build something meaningful.
     </div>
